@@ -1,83 +1,128 @@
-import { Button } from "@/components/ui/button";
+import { ArrowRight, Sparkles, Star, Zap } from "lucide-react";
+
+const logos = [
+  "TechCorp", "DataFlow", "CloudSync", "MediaPro", "NetScale",
+  "SmartOps", "InnoLab", "StreamX",
+];
 
 export function HeroSection() {
-  return (
-    <section className="min-h-[90vh] flex items-center pt-24 pb-20">
-      <div className="vic-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Text – left-aligned, asymmetric */}
-          <div className="lg:col-span-7 lg:pr-8">
-            <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-6">
-              Digitale Medienagentur
-            </p>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight text-foreground">
-              Wir machen Ihre Prozesse schneller.
-              <br />
-              <span className="text-muted-foreground">Nicht Ihre Website bunter.</span>
-            </h1>
-            <p className="mt-8 text-lg text-muted-foreground max-w-xl leading-relaxed">
-              Prozessoptimierung durch präzise Digitalstrategien. Messbar, skalierbar,
-              ohne Buzzword-Bingo.
-            </p>
-            <Button
-              size="lg"
-              onClick={() =>
-                document.querySelector("#kontakt")?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="mt-10 rounded-none bg-primary text-primary-foreground hover:bg-primary/90 px-10 h-12 text-sm font-semibold tracking-wide"
-            >
-              Gespräch vereinbaren
-            </Button>
-          </div>
+  const scrollTo = (href: string) => {
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+  };
 
-          {/* Abstract line diagram – right side */}
-          <div className="lg:col-span-5 hidden lg:flex items-center justify-center">
-            <svg
-              viewBox="0 0 400 400"
-              className="w-full max-w-[360px] text-primary"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1"
-            >
-              {/* Abstract process flow lines */}
-              <path
-                d="M 40 200 L 120 200 L 160 120 L 240 120 L 280 200 L 360 200"
-                className="animate-line-draw"
-                strokeDasharray="1000"
-                opacity="0.6"
-              />
-              <path
-                d="M 40 240 L 140 240 L 180 300 L 260 300 L 300 240 L 360 240"
-                className="animate-line-draw"
-                strokeDasharray="1000"
-                opacity="0.3"
-                style={{ animationDelay: "0.5s" }}
-              />
-              <path
-                d="M 80 160 L 160 160 L 200 80 L 320 80"
-                className="animate-line-draw"
-                strokeDasharray="1000"
-                opacity="0.15"
-                style={{ animationDelay: "1s" }}
-              />
-              {/* Node dots */}
-              {[
-                [120, 200], [160, 120], [240, 120], [280, 200],
-                [140, 240], [180, 300], [260, 300], [300, 240],
-                [160, 160], [200, 80],
-              ].map(([cx, cy], i) => (
-                <circle
-                  key={i}
-                  cx={cx}
-                  cy={cy}
-                  r="3"
-                  fill="currentColor"
-                  opacity={0.4 - i * 0.03}
-                />
-              ))}
+  return (
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-accent/40 to-vic-blue-light" />
+
+      {/* Decorative elements */}
+      <div className="absolute top-32 right-20 animate-float opacity-20">
+        <Star className="w-8 h-8 text-primary" fill="currentColor" />
+      </div>
+      <div className="absolute top-60 left-16 animate-float-delayed opacity-15">
+        <Sparkles className="w-10 h-10 text-vic-indigo" />
+      </div>
+      <div className="absolute bottom-40 right-40 animate-float-slow opacity-10">
+        <div className="w-32 h-32 rounded-full border-2 border-primary/20" />
+      </div>
+      <div className="absolute top-40 left-1/3 opacity-10">
+        <div className="w-64 h-64 rounded-full bg-primary/10 blur-3xl" />
+      </div>
+      <div className="absolute bottom-20 right-1/4 opacity-10">
+        <div className="w-48 h-48 rounded-full bg-vic-indigo/10 blur-3xl" />
+      </div>
+
+      <div className="relative vic-container text-center py-20">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 section-badge mb-8">
+          <Zap className="w-3.5 h-3.5" />
+          Digitale Medienagentur
+        </div>
+
+        {/* Main headline */}
+        <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.08] tracking-tight text-foreground max-w-4xl mx-auto">
+          Wir machen Ihre{" "}
+          <span className="relative inline-block">
+            <span className="text-gradient-blue">Prozesse</span>
+            <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 8" fill="none">
+              <path d="M2 6C50 2 150 2 198 6" stroke="hsl(217 91% 60%)" strokeWidth="3" strokeLinecap="round" opacity="0.4" />
             </svg>
+          </span>{" "}
+          schneller.
+          <br />
+          <span className="text-muted-foreground">Nicht Ihre Website bunter.</span>
+        </h1>
+
+        <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          Prozessoptimierung durch präzise Digitalstrategien. Messbar, skalierbar,
+          ohne Buzzword-Bingo.
+        </p>
+
+        {/* CTAs */}
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button
+            onClick={() => scrollTo("#kontakt")}
+            className="pill-button-primary px-8 py-3.5 text-sm gap-2"
+          >
+            Gespräch vereinbaren
+            <ArrowRight className="w-4 h-4" />
+          </button>
+          <button
+            onClick={() => scrollTo("#leistungen")}
+            className="pill-button-outline px-8 py-3.5 text-sm"
+          >
+            Mehr erfahren
+          </button>
+        </div>
+
+        {/* Trust badge */}
+        <div className="mt-12 inline-flex items-center gap-3 glass-card rounded-full px-5 py-2.5">
+          <div className="flex -space-x-2">
+            {[0, 1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="w-8 h-8 rounded-full border-2 border-white bg-gradient-to-br from-primary/70 to-vic-indigo/70 flex items-center justify-center text-white text-[10px] font-bold"
+              >
+                {["M", "K", "S", "T"][i]}
+              </div>
+            ))}
+          </div>
+          <div className="text-left">
+            <p className="text-sm font-semibold text-foreground">40+ Workflows</p>
+            <p className="text-xs text-muted-foreground">optimiert & skaliert</p>
           </div>
         </div>
+
+        {/* Logo marquee */}
+        <div className="mt-20 relative overflow-hidden">
+          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6 font-medium">
+            Vertraut von führenden Unternehmen
+          </p>
+          <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+            <div className="animate-marquee flex items-center gap-12 min-w-max">
+              {[...logos, ...logos].map((name, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-2 text-muted-foreground/40 hover:text-muted-foreground/60 transition-colors"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center">
+                    <span className="text-xs font-bold text-muted-foreground/50">
+                      {name[0]}
+                    </span>
+                  </div>
+                  <span className="text-sm font-semibold whitespace-nowrap">{name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Curved divider */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 80" fill="none" className="w-full">
+          <path d="M0 80L1440 80L1440 40C1440 40 1080 0 720 0C360 0 0 40 0 40L0 80Z" fill="white" />
+        </svg>
       </div>
     </section>
   );

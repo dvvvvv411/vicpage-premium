@@ -6,68 +6,48 @@
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 220 20% 10%;
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 215 90% 52%;
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 20% 10%;
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 10% 46%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 215 90% 52%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 213 94% 95%;
+    --accent-foreground: 217 91% 60%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 90%;
-    --input: 220 13% 90%;
-    --ring: 215 90% 52%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
 
-    --radius: 0.25rem;
+    --radius: 0.75rem;
 
-    --vic-blue: 215 90% 52%;
-    --vic-blue-light: 215 90% 96%;
-    --vic-dark: 220 20% 10%;
-    --vic-gray: 220 10% 46%;
-    --vic-line: 220 13% 88%;
-  }
-
-  .dark {
-    --background: 220 20% 6%;
-    --foreground: 0 0% 95%;
-    --card: 220 20% 8%;
-    --card-foreground: 0 0% 95%;
-    --popover: 220 20% 8%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 215 90% 58%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 220 14% 14%;
-    --secondary-foreground: 0 0% 95%;
-    --muted: 220 14% 14%;
-    --muted-foreground: 220 10% 60%;
-    --accent: 215 90% 58%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 220 14% 16%;
-    --input: 220 14% 16%;
-    --ring: 215 90% 58%;
-    --vic-blue: 215 90% 58%;
-    --vic-blue-light: 215 30% 14%;
-    --vic-dark: 0 0% 95%;
-    --vic-gray: 220 10% 60%;
-    --vic-line: 220 14% 18%;
+    /* Extended palette */
+    --vic-blue: 217 91% 60%;
+    --vic-blue-light: 213 94% 95%;
+    --vic-blue-medium: 214 84% 80%;
+    --vic-indigo: 226 70% 55%;
+    --vic-indigo-light: 226 100% 97%;
+    --vic-dark: 222 47% 11%;
+    --vic-navy: 222 47% 15%;
+    --vic-gray: 215 16% 47%;
+    --vic-line: 214 32% 91%;
+    --vic-surface: 210 40% 98%;
+    --vic-glass: 0 0% 100%;
   }
 }
 
@@ -86,8 +66,73 @@
   }
 }
 
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/60 shadow-lg;
+    background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
+  }
+
+  .glass-card-solid {
+    @apply bg-white border border-border/50 shadow-lg;
+  }
+
+  .section-badge {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase;
+    background: hsl(var(--vic-blue-light));
+    color: hsl(var(--vic-blue));
+    border: 1px solid hsl(var(--vic-blue-medium) / 0.3);
+  }
+
+  .pill-button {
+    @apply inline-flex items-center justify-center rounded-full font-semibold transition-all duration-300;
+  }
+
+  .pill-button-primary {
+    @apply pill-button bg-primary text-primary-foreground hover:shadow-xl hover:shadow-primary/25 hover:-translate-y-0.5;
+  }
+
+  .pill-button-outline {
+    @apply pill-button border-2 border-primary/20 text-foreground hover:border-primary/40 hover:bg-accent;
+  }
+}
+
 @layer utilities {
   .vic-container {
-    @apply mx-auto w-full max-w-[1320px] px-6 md:px-10 lg:px-16;
+    @apply mx-auto w-full max-w-[1280px] px-6 md:px-10 lg:px-16;
   }
+
+  .text-gradient-blue {
+    background: linear-gradient(135deg, hsl(var(--vic-blue)), hsl(var(--vic-indigo)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(3deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 8s ease-in-out 2s infinite;
+}
+
+.animate-float-slow {
+  animation: float 10s ease-in-out 1s infinite;
 }

@@ -1,75 +1,106 @@
-const services = [
+import { BarChart3, Cpu, LineChart, Megaphone, Settings, Target } from "lucide-react";
+
+const features = [
   {
-    num: "01",
+    icon: Cpu,
     title: "Prozessoptimierung & Automatisierung",
-    desc: "Wir analysieren Ihre bestehenden Workflows und eliminieren Reibungsverluste. Durch gezielte Automatisierung werden manuelle Schritte reduziert – messbar und nachhaltig.",
-    size: "large" as const,
+    desc: "Wir analysieren Ihre bestehenden Workflows und eliminieren Reibungsverluste. Durch gezielte Automatisierung werden manuelle Schritte reduziert.",
+    span: "lg:col-span-2 lg:row-span-2",
+    showMockup: true,
   },
   {
-    num: "02",
-    title: "Digitale Strategie & Content",
-    desc: "Klare Positionierung statt Content-Flut. Wir entwickeln Strategien, die auf Ihre Geschäftsziele einzahlen – nicht auf Vanity Metrics.",
-    size: "medium" as const,
+    icon: Target,
+    title: "Digitale Strategie",
+    desc: "Klare Positionierung statt Content-Flut. Strategien, die auf Ihre Geschäftsziele einzahlen.",
+    span: "lg:col-span-1",
   },
   {
-    num: "03",
-    title: "Performance & Analytics",
-    desc: "Datengetriebene Entscheidungen statt Bauchgefühl. Wir machen Ergebnisse sichtbar und optimieren kontinuierlich.",
-    size: "small" as const,
+    icon: Megaphone,
+    title: "Content & Branding",
+    desc: "Markenaufbau mit System. Kein Vanity-Content, sondern relevante Inhalte mit Wirkung.",
+    span: "lg:col-span-1",
+  },
+  {
+    icon: LineChart,
+    title: "Performance Marketing",
+    desc: "Datengetriebene Kampagnen mit messbarem ROI – kein Budgetverschwendung.",
+    span: "lg:col-span-1",
+  },
+  {
+    icon: BarChart3,
+    title: "Analytics & Reporting",
+    desc: "Transparente Dashboards und Reports, die echte Entscheidungen ermöglichen.",
+    span: "lg:col-span-1",
+  },
+  {
+    icon: Settings,
+    title: "Tech-Integration",
+    desc: "Nahtlose Anbindung Ihrer Tools und Systeme für einen durchgängigen Datenfluss.",
+    span: "lg:col-span-1",
   },
 ];
 
+function DashboardMockup() {
+  return (
+    <div className="mt-6 rounded-2xl bg-gradient-to-br from-accent to-vic-blue-light p-4 border border-primary/10">
+      <div className="flex items-center gap-2 mb-3">
+        <div className="w-2.5 h-2.5 rounded-full bg-destructive/60" />
+        <div className="w-2.5 h-2.5 rounded-full bg-muted-foreground/40" />
+        <div className="w-2.5 h-2.5 rounded-full bg-primary/40" />
+        <div className="flex-1" />
+        <div className="h-2 w-20 rounded-full bg-primary/10" />
+      </div>
+      <div className="grid grid-cols-3 gap-2 mb-3">
+        {["+73%", "2.1M€", "40+"].map((v, i) => (
+          <div key={i} className="rounded-xl bg-white/80 p-3 text-center">
+            <p className="text-sm font-bold text-primary">{v}</p>
+            <div className="h-1.5 w-12 mx-auto mt-1 rounded-full bg-primary/15" />
+          </div>
+        ))}
+      </div>
+      <div className="flex items-end gap-1.5 h-16 px-2">
+        {[40, 65, 45, 80, 55, 90, 70, 95, 60, 85, 75, 100].map((h, i) => (
+          <div
+            key={i}
+            className="flex-1 rounded-t-md bg-gradient-to-t from-primary/60 to-primary/20"
+            style={{ height: `${h}%` }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function ServicesSection() {
   return (
-    <section id="leistungen" className="py-24 md:py-32">
+    <section id="leistungen" className="py-24 md:py-32 bg-white relative">
       <div className="vic-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-          {/* Fixed label left */}
-          <div className="lg:col-span-4">
-            <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-3">
-              Leistungen
-            </p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-              Was wir tun
-            </h2>
-          </div>
+        <div className="text-center mb-16">
+          <div className="section-badge mb-4">Unsere Leistungen</div>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+            Alles was Sie brauchen.{" "}
+            <span className="text-gradient-blue">Nichts was Sie nicht brauchen.</span>
+          </h2>
+        </div>
 
-          {/* Staggered blocks right */}
-          <div className="lg:col-span-8 space-y-0">
-            {services.map((s) => (
-              <div
-                key={s.num}
-                className={`group border-t border-border py-8 md:py-10 pl-0 hover:pl-4 transition-all duration-300 relative ${
-                  s.size === "large" ? "md:py-14" : s.size === "small" ? "md:py-8" : ""
-                }`}
-              >
-                {/* Blue accent bar on hover */}
-                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-primary scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top" />
-
-                <div className="flex items-baseline gap-6">
-                  <span className="text-sm font-mono text-primary">{s.num}</span>
-                  <div>
-                    <h3
-                      className={`font-display font-semibold tracking-tight text-foreground ${
-                        s.size === "large"
-                          ? "text-xl md:text-2xl"
-                          : s.size === "medium"
-                          ? "text-lg md:text-xl"
-                          : "text-base md:text-lg"
-                      }`}
-                    >
-                      {s.title}
-                    </h3>
-                    <p className="mt-3 text-muted-foreground leading-relaxed max-w-lg text-sm md:text-base">
-                      {s.desc}
-                    </p>
-                  </div>
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {features.map((f, i) => (
+            <div
+              key={i}
+              className={`group glass-card-solid rounded-2xl p-6 md:p-8 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300 ${f.span}`}
+            >
+              <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <f.icon className="w-6 h-6 text-accent-foreground group-hover:text-primary-foreground transition-colors" />
               </div>
-            ))}
-            {/* Bottom border */}
-            <div className="border-t border-border" />
-          </div>
+              <h3 className="font-display text-lg md:text-xl font-semibold text-foreground mb-2">
+                {f.title}
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {f.desc}
+              </p>
+              {f.showMockup && <DashboardMockup />}
+            </div>
+          ))}
         </div>
       </div>
     </section>
