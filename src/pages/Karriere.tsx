@@ -77,14 +77,48 @@ const Karriere = () => {
           subtitle="Wir suchen Menschen, die mit Leidenschaft und Kreativität die digitale Zukunft gestalten wollen. Entdecke deine Möglichkeiten bei VicPage."
         />
 
-        {/* Job Listing */}
+        {/* Auf einen Blick – Full Width */}
+        <section className="py-12 md:py-16 bg-white">
+          <div className="vic-container">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="glass-card-solid rounded-2xl p-6 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5 text-accent-foreground" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider">Standort</p>
+                  <p className="text-base font-semibold text-foreground">Berlin / Remote</p>
+                </div>
+              </div>
+              <div className="glass-card-solid rounded-2xl p-6 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center shrink-0">
+                  <Calendar className="w-5 h-5 text-accent-foreground" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider">Startdatum</p>
+                  <p className="text-base font-semibold text-foreground">Ab sofort</p>
+                </div>
+              </div>
+              <div className="glass-card-solid rounded-2xl p-6 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center shrink-0">
+                  <Users className="w-5 h-5 text-accent-foreground" />
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider">Team</p>
+                  <p className="text-base font-semibold text-foreground">12 Mitarbeitende</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Job Listing – 50/50 */}
         <section className="py-20 md:py-28 bg-white">
           <div className="vic-container">
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
               {/* Left: Job Details */}
-              <div className="lg:col-span-3">
+              <div>
                 <div className="glass-card-solid rounded-2xl p-8 md:p-10">
-                  {/* Title & Meta */}
                   <div className="flex items-start gap-4 mb-6">
                     <div className="w-12 h-12 rounded-2xl bg-accent flex items-center justify-center shrink-0">
                       <Briefcase className="w-6 h-6 text-accent-foreground" />
@@ -108,7 +142,6 @@ const Karriere = () => {
                     </span>
                   </div>
 
-                  {/* Sections */}
                   <div className="space-y-10">
                     <div>
                       <h3 className="font-display text-lg font-bold text-foreground mb-4 flex items-center gap-2">
@@ -158,43 +191,9 @@ const Karriere = () => {
                 </div>
               </div>
 
-              {/* Right: Sticky Sidebar with Form */}
-              <div className="lg:col-span-2">
-                <div className="lg:sticky lg:top-28 space-y-6">
-                  <div className="glass-card-solid rounded-2xl p-6 space-y-5">
-                    <h3 className="font-display text-base font-bold text-foreground">Auf einen Blick</h3>
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-accent flex items-center justify-center">
-                          <MapPin className="w-4 h-4 text-accent-foreground" />
-                        </div>
-                        <div>
-                          <p className="text-xs text-muted-foreground uppercase tracking-wider">Standort</p>
-                          <p className="text-sm font-medium text-foreground">Berlin / Remote</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-accent flex items-center justify-center">
-                          <Calendar className="w-4 h-4 text-accent-foreground" />
-                        </div>
-                        <div>
-                          <p className="text-xs text-muted-foreground uppercase tracking-wider">Startdatum</p>
-                          <p className="text-sm font-medium text-foreground">Ab sofort</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-xl bg-accent flex items-center justify-center">
-                          <Users className="w-4 h-4 text-accent-foreground" />
-                        </div>
-                        <div>
-                          <p className="text-xs text-muted-foreground uppercase tracking-wider">Team</p>
-                          <p className="text-sm font-medium text-foreground">12 Mitarbeitende</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Application Form */}
+              {/* Right: Sticky Form */}
+              <div>
+                <div className="lg:sticky lg:top-28">
                   <form
                     onSubmit={handleSubmit}
                     className="glass-card-solid rounded-2xl p-6 space-y-4"
