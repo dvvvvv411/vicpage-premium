@@ -1,31 +1,33 @@
 
+# CTA-Sektionen Redesign -- Premium Light Style
 
-# Zwei Anpassungen: Services-Headline + Footer-Redesign
+Beide CTA-Sektionen verwenden aktuell einen simplen blauen Gradient-Hintergrund (`bg-gradient-to-br from-primary via-primary to-vic-indigo`). Das passt nicht zum hellen, modernen Glassmorphism-Design der restlichen Seite.
 
-## 1. Services-Headline auf 2 Zeilen aufteilen
+## Neues Design-Konzept
 
-Aktuell steht die Headline "Alles was Sie brauchen. Nichts was Sie nicht brauchen." in einer Zeile. Sie wird auf zwei Zeilen aufgeteilt:
+Statt des soliden blauen Gradients bekommen die CTA-Sektionen einen hellen, layered Hintergrund mit dekorativen Elementen:
 
-- Zeile 1: **Alles was Sie brauchen.**
-- Zeile 2: **Nichts was Sie nicht brauchen.**
+- **Hintergrund**: Helles Blau (`bg-accent` / `bg-vic-blue-light`) mit subtilen radialen Gradient-Kreisen als CSS-Dekorationen
+- **Glassmorphism-Card** in der Mitte: Der eigentliche CTA-Inhalt sitzt in einer zentrierten `glass-card` mit Backdrop-Blur
+- **Dekorative Elemente**: Grosse, unscharfe farbige Kreise (blau/indigo) im Hintergrund als "Blobs", floating Sparkles/Dots
+- **Text**: Dunkler Text (`foreground`) statt weiss, mit `text-primary` Akzenten
+- **Button**: Blauer Pill-Button (`pill-button-primary`) statt invertierter weisser Button
 
-Ausserdem wird der `text-gradient-blue` Effekt entfernt (laut Design-Richtlinien keine Gradient-Texte), stattdessen bleibt die zweite Zeile als normaler Text oder mit einem dezenten blauen Akzent.
+## Dateien die geaendert werden
 
-**Datei:** `src/components/ServicesSection.tsx` (Zeile 81-83)
+### 1. `src/components/CTASection.tsx`
+- Hintergrund von solidem Blau zu hellem `bg-accent`/`bg-muted` mit dekorativen Blur-Blobs
+- Text auf dunkle Farben umstellen
+- Dekorative Gradient-Kreise (absolute positioniert, blur, opacity) als Hintergrund-Elemente
+- Button zurueck auf Standard `pill-button-primary`
 
-## 2. Footer-Redesign passend zum Seitenstyle
+### 2. `src/components/ContactSection.tsx`
+- Gleiche Behandlung: heller Hintergrund mit Blur-Blobs statt solidem Blau
+- Formular-Card bleibt weiss, aber der aeussere Container wird hell
+- Linke Text-Seite: dunkler Text mit blauen Akzenten statt weiss
+- Kontaktinfos in `muted-foreground` statt `white/70`
 
-Der aktuelle Footer ist zu simpel und dunkel -- er passt nicht zum hellen, modernen Glassmorphism-Design der restlichen Seite. Neues Design:
-
-- **Heller Hintergrund** (weiss/surface) statt dunkles `vic-dark`
-- **Oberer Separator** als duenne blaue Linie statt harter Farbwechsel
-- **3-Spalten-Layout**:
-  - Links: Logo + kurzer Beschreibungstext
-  - Mitte: Navigation-Links als Spalte
-  - Rechts: Kontaktinfos (E-Mail, Telefon)
-- **Unterer Bereich**: Copyright + Impressum/Datenschutz Links, getrennt durch feine Linie
-- Texte in `muted-foreground` statt `white/70`
-- Glassmorphism-Card-Style oder einfach cleaner weisser Hintergrund mit Border-Top
-
-**Datei:** `src/components/Footer.tsx` (komplett ueberarbeitet)
-
+## Visuelles Ergebnis
+- Konsistenter heller Premium-Look auf der ganzen Seite
+- Tiefe durch ueberlagerte Blur-Kreise statt flachem Gradient
+- Moderner "Next Level"-Stil passend zum Rest der Seite
