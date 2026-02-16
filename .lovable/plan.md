@@ -1,62 +1,26 @@
 
-# Neue Unterseite: /karriere
+# Karriere-Seite: Stellenbeschreibung und Formular nebeneinander
 
-Die wichtigste Seite der Website -- eine moderne, visuell ansprechende Karriereseite mit einer einzelnen Stellenanzeige und integriertem Bewerbungsformular.
+Die aktuelle Seite hat die Stellenbeschreibung und das Bewerbungsformular als zwei separate Sektionen untereinander. Das wird zu einem einzigen 2-Spalten-Layout zusammengefuehrt.
 
-## Neue Dateien
+## Aenderung
 
-### 1. `src/pages/Karriere.tsx`
+**Datei:** `src/pages/Karriere.tsx`
 
-Vollstaendige neue Seite mit folgendem Aufbau:
+Die bisherige Struktur:
+- Sektion 1: Job-Details (3 Spalten) + Sidebar (2 Spalten)
+- Sektion 2: Separater Gradient-Bereich mit zentriertem Formular
 
-**a) PageHero** (wie alle anderen Unterseiten)
-- Badge: "Karriere"
-- Titel: "Werde Teil unseres Teams" (mit Gradient-Akzent)
-- Subtitle: Platzhaltertext ueber Teamkultur
+Wird zu einer einzigen Sektion:
+- **Linke Spalte (3/5):** Stellenbeschreibung (Titel, Badges, Aufgaben, Profil, Benefits) -- wie bisher
+- **Rechte Spalte (2/5):** Sticky-Container mit der "Auf einen Blick"-Card UND dem Bewerbungsformular direkt darunter
 
-**b) Stellenanzeige-Sektion** (weisser Hintergrund)
-- Linke Seite (3/5 Breite): Die Stellenanzeige in einem glass-card-solid Container
-  - Stellentitel (z.B. "Digital Marketing Manager (m/w/d)")
-  - Meta-Infos als kleine Badges/Pills: Standort, Vertragsart, Erfahrungslevel
-  - Abschnitte mit Icons: "Deine Aufgaben", "Dein Profil", "Was wir bieten" -- jeweils als Aufzaehlungsliste mit CheckCircle2-Icons (wie auf der Leistungen-Seite)
-- Rechte Seite (2/5 Breite): Sticky-Sidebar mit:
-  - Kurzinfo-Card (Standort, Startdatum, Team-Groesse)
-  - "Jetzt bewerben"-Button der zum Formular scrollt
+## Konkrete Aenderungen
 
-**c) Bewerbungsformular-Sektion** (geschwungener SVG-Trenner, Gradient-Hintergrund wie FAQ auf Kontaktseite)
-- Zentriertes Formular in glass-card (max-w-3xl)
-- Felder: Name, E-Mail, Telefon, LinkedIn-Profil (optional), Textarea fuer Anschreiben/Motivation
-- Datei-Upload-Bereich (visuell gestaltet, noch ohne Funktion -- nur UI)
-- Submit-Button im pill-button-primary Stil
-- Toast-Feedback bei Absenden
-
-**d) CTASection** am Ende (bestehende Komponente, angepasster Text)
-
-### 2. Aenderungen an bestehenden Dateien
-
-**`src/App.tsx`**
-- Import der neuen Karriere-Seite
-- Neue Route: `<Route path="/karriere" element={<Karriere />} />`
-
-**`src/components/Navbar.tsx`**
-- "Karriere" als neuen Link in `navLinks` hinzufuegen (zwischen "Arbeitsweise" und Kontakt-Button)
-
-**`src/components/Footer.tsx`**
-- "Karriere"-Link in der Footer-Navigation ergaenzen
-
-## Design-Details
-
-- Gleiche Typografie (Space Grotesk Headings, Inter Body)
-- Gleiche Farbpalette und Glassmorphism-Effekte
-- Pillenfoermige Buttons, section-badges, rounded-2xl Cards
-- Geschwungene SVG-Sektions-Trenner
-- Dezente Hintergrund-Ornamente (Sparkles, Kreise) wie auf den anderen Seiten
-- Responsive: Mobile-First, Sidebar wird auf Mobile zum normalen Flow
-- Platzhaltertexte ueberall -- koennen spaeter einfach angepasst werden
-
-## Technische Details
-
-- Formular mit useState wie auf der Kontaktseite
-- Smooth-Scroll zum Bewerbungsformular via `document.getElementById().scrollIntoView()`
-- Lucide Icons: `Briefcase`, `MapPin`, `Clock`, `Users`, `CheckCircle2`, `Upload`, `Send`, `Sparkles`
-- Keine neuen Dependencies noetig
+1. Die separate Formular-Sektion (Zeilen 214-339 mit SVG-Trennern und Gradient-Hintergrund) wird komplett entfernt
+2. Das Formular wird in die rechte Sidebar-Spalte verschoben, unterhalb der "Auf einen Blick"-Card
+3. Die Sidebar bleibt sticky, sodass das Formular beim Scrollen sichtbar bleibt
+4. Der "Jetzt bewerben"-Button entfaellt (Formular ist ja direkt sichtbar)
+5. Die `scrollToForm`-Funktion wird entfernt (nicht mehr noetig)
+6. Das Formular behaelt sein glass-card Styling, wird aber kompakter (kleinere Paddings, engere Feldabstaende)
+7. Auf Mobile stapeln sich die Spalten: erst Stellenbeschreibung, dann Formular
