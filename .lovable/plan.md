@@ -1,40 +1,23 @@
 
 
-# Adobe Partner Badge: Komplettes Redesign
+# Hero Section: Adobe Partner Badge
 
-Die aktuelle Badge ist zu subtil und wirkt statisch. Sie wird komplett neu gestaltet mit mehr visueller Praesenz, Interaktivitaet und dem gleichen modernen Stil wie der Rest der Seite.
+Die "40+ Workflows optimiert & skaliert" Trust-Badge mit den Initialen-Avataren wird ersetzt durch eine "Offizieller Adobe Partner" Badge mit echten Adobe-Produktlogos.
 
 ## Aenderungen
 
-### 1. Neues Badge-Layout (`src/components/HeroSection.tsx`, Zeilen 70-91)
+**Datei:** `src/components/HeroSection.tsx` (Zeilen 64-80)
 
-Der gesamte Trust-Badge-Block wird ersetzt durch ein deutlich aufgewertetes Design:
+Der aktuelle Block mit den 4 Initialen-Kreisen ("M", "K", "S", "T") und dem Text "40+ Workflows / optimiert & skaliert" wird ersetzt durch:
 
-- **Groesserer Container**: Statt `rounded-full` wird `rounded-2xl` verwendet fuer mehr Praesenz, mit mehr Padding (`px-6 py-4`)
-- **Hover-Interaktion**: `hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300` -- genau wie die Bento-Cards in der ServicesSection
-- **Cursor pointer**: Signalisiert Interaktivitaet
-- **Glassmorphism**: Nutzt die bestehende `glass-card` Klasse korrekt (die bereits `backdrop-blur-xl` und den Gradient-Hintergrund enthaelt), plus `border border-white/40`
+- **4 Adobe-Produktlogos** als kleine Bilder in runden Containern, geladen von offiziellen/oeffentlichen CDN-URLs:
+  - Adobe Photoshop
+  - Adobe Illustrator
+  - Adobe Premiere Pro
+  - Adobe After Effects
+- **Neuer Text:**
+  - Zeile 1 (fett): "Offizieller Adobe Partner"
+  - Zeile 2 (klein, muted): "Creative Cloud Suite"
 
-### 2. Logo-Icons statt Kreise
-
-- Die Logos werden nicht mehr in runden Containern mit Overlap (`-space-x-1.5`) dargestellt
-- Stattdessen: **quadratische `rounded-xl` Container** mit etwas Abstand (`gap-2`), jeweils `w-10 h-10`, mit `bg-white/60 backdrop-blur-sm` und `hover:bg-white/90 hover:scale-110 transition-all duration-200`
-- Jedes Logo bekommt einen individuellen **Tooltip** (ueber das bestehende Tooltip-UI-Component) mit dem Produktnamen
-- Logo-Groesse erhoehen auf `w-6 h-6`
-
-### 3. Text-Bereich
-
-- "Offizieller Adobe Partner" bleibt fett
-- "Creative Cloud Suite" wird ersetzt durch einen kleinen blauen Akzent-Punkt und "Zertifizierter Partner" in `text-primary` fuer mehr Farbe
-- Ein dezenter Trenner (`border-l border-white/40`) zwischen Logos und Text
-
-### 4. Technische Details
-
-**Datei:** `src/components/HeroSection.tsx`
-
-- Import von `Tooltip, TooltipTrigger, TooltipContent, TooltipProvider` aus `@/components/ui/tooltip`
-- Ersetzen des Badge-Blocks (Zeilen 70-91) mit dem neuen Design
-- Jedes Logo-Icon wird in ein `Tooltip`-Wrapper gepackt
-
-**Keine weiteren Dateien betroffen** -- alle benoetigten Styles (`glass-card`, Transitions) und Components (Tooltip) existieren bereits.
+Die Logos werden ueber `<img>`-Tags mit oeffentlich verfuegbaren Adobe-Produkticons eingebunden (z.B. von upload.wikimedia.org oder den offiziellen Adobe-Asset-URLs). Der glassmorphism-Card-Style bleibt erhalten.
 
