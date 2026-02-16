@@ -1,22 +1,39 @@
 
+# Bewerbungsformular ueberarbeiten
 
-# Abstand zwischen "Auf einen Blick" und Stellenanzeige reduzieren
+## Neue Felder und Layout
 
-## Problem
-
-Die beiden Sektionen ("Auf einen Blick" und "Job Listing") sind jeweils eigene `<section>`-Elemente mit eigenem Padding, was zu doppeltem Abstand fuehrt:
-- "Auf einen Blick": `py-12 md:py-16`
-- "Job Listing": `py-20 md:py-28`
-
-## Loesung
-
-Beide Bereiche werden in **eine einzige `<section>`** zusammengefasst. Das 3-Spalten-Grid fuer "Auf einen Blick" wird einfach ueber dem 2-Spalten-Grid platziert, mit nur einem moderaten Abstand (`mb-10`) dazwischen. Das Gesamtergebnis sieht exakt gleich aus, nur ohne den grossen Leerraum.
-
-## Technische Aenderung
+Das bestehende Formular wird komplett ueberarbeitet. Die alten Felder (Name, E-Mail, Telefon, LinkedIn, Anschreiben/Motivation) werden durch folgende ersetzt:
 
 **Datei:** `src/pages/Karriere.tsx`
 
-- Die separate `<section className="py-12 md:py-16 bg-white">` (Auf einen Blick) wird entfernt
-- Das 3-Spalten-Grid wird direkt in die Job-Listing-Sektion verschoben, oberhalb des 2-Spalten-Grids
-- Ein `mb-10` trennt die beiden Grids innerhalb derselben Sektion
-- Die Job-Listing-Sektion behaelt ihr Padding (`py-20 md:py-28 bg-white`)
+### 1. State anpassen (Zeilen 48-54)
+
+Neuer formData-State:
+- `firstName`, `lastName`, `email`, `phone`, `street`, `zip`, `city`, `employmentType`
+- Die alten Felder (`name`, `linkedin`, `message`) werden entfernt
+
+### 2. Formularfelder ersetzen (Zeilen 196-263)
+
+Neue Feldstruktur im Formular:
+
+| Zeile 1 | Vorname (50%) | Nachname (50%) |
+|---------|---------------|----------------|
+| Zeile 2 | E-Mail (100%) | |
+| Zeile 3 | Telefon (100%) | |
+| Zeile 4 | Strasse & Hausnummer (100%) | |
+| Zeile 5 | PLZ (1/3) | Stadt (2/3) |
+| Zeile 6 | Anstellungsart - Dropdown (100%) |
+
+- Zweispaltige Zeilen verwenden `grid grid-cols-2 gap-3`
+- PLZ/Stadt verwenden `grid grid-cols-3 gap-3` wobei PLZ `col-span-1` und Stadt `col-span-2` bekommt
+- Fuer die Anstellungsart wird ein Radix Select-Dropdown (bereits installiert) mit den Optionen: Minijob, Teilzeit, Vollzeit verwendet
+- Die Textarea (Anschreiben) und der Lebenslauf-Upload bleiben bestehen
+
+### 3. Imports ergaenzen
+
+- `Select, SelectTrigger, SelectValue, SelectContent, SelectItem` aus `@/components/ui/select` importieren
+
+### 4. handleSubmit und Reset anpassen
+
+- Reset-Objekt an die neuen Felder anpassen
