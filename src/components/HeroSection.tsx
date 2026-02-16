@@ -69,19 +69,24 @@ export function HeroSection() {
 
         {/* Trust badge */}
         <div className="mt-12 inline-flex items-center gap-3 glass-card rounded-full px-5 py-2.5">
-          <div className="flex -space-x-2">
-            {[0, 1, 2, 3].map((i) => (
+          <div className="flex -space-x-1.5">
+            {[
+              { src: "https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg", alt: "Adobe Photoshop" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg", alt: "Adobe Illustrator" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg", alt: "Adobe Premiere Pro" },
+              { src: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg", alt: "Adobe After Effects" },
+            ].map((logo, i) => (
               <div
                 key={i}
-                className="w-8 h-8 rounded-full border-2 border-white bg-gradient-to-br from-primary/70 to-vic-indigo/70 flex items-center justify-center text-white text-[10px] font-bold"
+                className="w-8 h-8 rounded-full border-2 border-white bg-white flex items-center justify-center overflow-hidden"
               >
-                {["M", "K", "S", "T"][i]}
+                <img src={logo.src} alt={logo.alt} className="w-5 h-5 object-contain" />
               </div>
             ))}
           </div>
           <div className="text-left">
-            <p className="text-sm font-semibold text-foreground">40+ Workflows</p>
-            <p className="text-xs text-muted-foreground">optimiert & skaliert</p>
+            <p className="text-sm font-semibold text-foreground">Offizieller Adobe Partner</p>
+            <p className="text-xs text-muted-foreground">Creative Cloud Suite</p>
           </div>
         </div>
 
