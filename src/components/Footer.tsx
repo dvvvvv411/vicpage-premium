@@ -1,21 +1,27 @@
 export function Footer() {
   return (
-    <footer>
-      <div className="vic-container">
-        <div className="h-px bg-primary/20" />
-        <div className="flex flex-col sm:flex-row items-center justify-between py-6 gap-4">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} VicPage. Alle Rechte vorbehalten.
-          </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+    <footer className="bg-vic-dark text-white/70">
+      <div className="vic-container py-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <p className="font-display text-lg font-bold text-white">
+              Vic<span className="text-primary">Page</span>
+            </p>
+            <p className="text-xs mt-1">Digitale Medienagentur</p>
+          </div>
+          <div className="flex gap-8">
+            <a href="#" className="text-xs hover:text-white transition-colors">
               Impressum
             </a>
-            <a href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+            <a href="#" className="text-xs hover:text-white transition-colors">
               Datenschutz
             </a>
           </div>
         </div>
+        <div className="h-px bg-white/10 my-8" />
+        <p className="text-xs text-center text-white/40">
+          © {new Date().getFullYear()} VicPage. Alle Rechte vorbehalten.
+        </p>
       </div>
     </footer>
   );
