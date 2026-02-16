@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Leistungen", href: "#leistungen" },
-  { label: "Ergebnisse", href: "#ergebnisse" },
-  { label: "Arbeitsweise", href: "#arbeitsweise" },
+  { label: "Leistungen", to: "/leistungen" },
+  { label: "Ergebnisse", to: "/ergebnisse" },
+  { label: "Arbeitsweise", to: "/arbeitsweise" },
 ];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -17,11 +19,9 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollTo = (href: string) => {
+  useEffect(() => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: "smooth" });
-  };
+  }, [location.pathname]);
 
   return (
     <nav
@@ -32,41 +32,32 @@ export function Navbar() {
       }`}
     >
       <div className="vic-container flex items-center justify-between h-16 md:h-20">
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-          className="font-display text-xl font-bold tracking-tight text-foreground"
-        >
+        <Link to="/" className="font-display text-xl font-bold tracking-tight text-foreground">
           Vic<span className="text-gradient-blue">Page</span>
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => scrollTo(link.href)}
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            <Link
+              key={link.to}
+              to={link.to}
+              className={`text-sm font-medium transition-colors ${
+                location.pathname === link.to
+                  ? "text-primary font-semibold"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
             >
               {link.label}
-            </button>
+            </Link>
           ))}
-          <button
-            onClick={() => scrollTo("#kontakt")}
-            className="pill-button-primary px-6 py-2.5 text-sm"
-          >
+          <Link to="/kontakt" className="pill-button-primary px-6 py-2.5 text-sm">
             Kontakt
-          </button>
+          </Link>
         </div>
 
         {/* Mobile toggle */}
-        <button
-          className="md:hidden p-2 text-foreground"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
+        <button className="md:hidden p-2 text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
@@ -75,20 +66,19 @@ export function Navbar() {
       {mobileOpen && (
         <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-border/50 px-6 pb-6 pt-4 space-y-4">
           {navLinks.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => scrollTo(link.href)}
-              className="block w-full text-left text-sm font-medium text-muted-foreground hover:text-foreground"
+            <Link
+              key={link.to}
+              to={link.to}
+              className={`block w-full text-left text-sm font-medium ${
+                location.pathname === link.to ? "text-primary font-semibold" : "text-muted-foreground hover:text-foreground"
+              }`}
             >
               {link.label}
-            </button>
+            </Link>
           ))}
-          <button
-            onClick={() => scrollTo("#kontakt")}
-            className="pill-button-primary px-6 py-2.5 text-sm w-full"
-          >
+          <Link to="/kontakt" className="pill-button-primary px-6 py-2.5 text-sm w-full text-center block">
             Kontakt
-          </button>
+          </Link>
         </div>
       )}
     </nav>

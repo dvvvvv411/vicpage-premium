@@ -1,4 +1,5 @@
 import { ArrowRight, Sparkles, Star, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const logos = [
   "TechCorp", "DataFlow", "CloudSync", "MediaPro", "NetScale",
@@ -6,9 +7,6 @@ const logos = [
 ];
 
 export function HeroSection() {
-  const scrollTo = (href: string) => {
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
@@ -60,19 +58,13 @@ export function HeroSection() {
 
         {/* CTAs */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button
-            onClick={() => scrollTo("#kontakt")}
-            className="pill-button-primary px-8 py-3.5 text-sm gap-2"
-          >
+          <Link to="/kontakt" className="pill-button-primary px-8 py-3.5 text-sm gap-2">
             Gespräch vereinbaren
             <ArrowRight className="w-4 h-4" />
-          </button>
-          <button
-            onClick={() => scrollTo("#leistungen")}
-            className="pill-button-outline px-8 py-3.5 text-sm"
-          >
+          </Link>
+          <Link to="/leistungen" className="pill-button-outline px-8 py-3.5 text-sm">
             Mehr erfahren
-          </button>
+          </Link>
         </div>
 
         {/* Trust badge */}
