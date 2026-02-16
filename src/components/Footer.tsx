@@ -1,27 +1,57 @@
 import { Link } from "react-router-dom";
+import { Mail, Phone } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-vic-dark text-white/70">
-      <div className="vic-container py-12">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="bg-background border-t border-primary/10">
+      <div className="vic-container py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Logo & Description */}
           <div>
-            <Link to="/" className="font-display text-lg font-bold text-white">
+            <Link to="/" className="font-display text-xl font-bold text-foreground">
               Vic<span className="text-primary">Page</span>
             </Link>
-            <p className="text-xs mt-1">Digitale Medienagentur</p>
+            <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
+              Digitale Medienagentur für Prozessoptimierung, Performance Marketing und datengetriebenes Wachstum.
+            </p>
           </div>
-          <div className="flex flex-wrap gap-8">
-            <Link to="/leistungen" className="text-xs hover:text-white transition-colors">Leistungen</Link>
-            <Link to="/ergebnisse" className="text-xs hover:text-white transition-colors">Ergebnisse</Link>
-            <Link to="/arbeitsweise" className="text-xs hover:text-white transition-colors">Arbeitsweise</Link>
-            <Link to="/kontakt" className="text-xs hover:text-white transition-colors">Kontakt</Link>
+
+          {/* Navigation */}
+          <div>
+            <h4 className="font-display font-semibold text-foreground mb-4">Navigation</h4>
+            <div className="flex flex-col gap-2.5">
+              <Link to="/leistungen" className="text-sm text-muted-foreground hover:text-primary transition-colors">Leistungen</Link>
+              <Link to="/ergebnisse" className="text-sm text-muted-foreground hover:text-primary transition-colors">Ergebnisse</Link>
+              <Link to="/arbeitsweise" className="text-sm text-muted-foreground hover:text-primary transition-colors">Arbeitsweise</Link>
+              <Link to="/kontakt" className="text-sm text-muted-foreground hover:text-primary transition-colors">Kontakt</Link>
+            </div>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="font-display font-semibold text-foreground mb-4">Kontakt</h4>
+            <div className="flex flex-col gap-2.5">
+              <a href="mailto:info@vicpage.de" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
+                <Mail className="w-4 h-4" /> info@vicpage.de
+              </a>
+              <a href="tel:+4917612345678" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
+                <Phone className="w-4 h-4" /> +49 176 1234 5678
+              </a>
+            </div>
           </div>
         </div>
-        <div className="h-px bg-white/10 my-8" />
-        <p className="text-xs text-center text-white/40">
-          © {new Date().getFullYear()} VicPage. Alle Rechte vorbehalten.
-        </p>
+
+        <div className="h-px bg-border my-10" />
+
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} VicPage. Alle Rechte vorbehalten.
+          </p>
+          <div className="flex gap-6">
+            <Link to="#" className="text-xs text-muted-foreground hover:text-primary transition-colors">Impressum</Link>
+            <Link to="#" className="text-xs text-muted-foreground hover:text-primary transition-colors">Datenschutz</Link>
+          </div>
+        </div>
       </div>
     </footer>
   );
