@@ -6,6 +6,7 @@ const navLinks = [
   { label: "Leistungen", to: "/leistungen" },
   { label: "Ergebnisse", to: "/ergebnisse" },
   { label: "Arbeitsweise", to: "/arbeitsweise" },
+  { label: "Karriere", to: "/karriere" },
 ];
 
 export function Navbar() {
