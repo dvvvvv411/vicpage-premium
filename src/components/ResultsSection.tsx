@@ -52,15 +52,13 @@ export function ResultsSection() {
           <div className="mt-16 max-w-2xl mx-auto glass-card rounded-2xl p-8 md:p-10 text-center">
             <Quote className="w-8 h-8 text-primary/30 mx-auto mb-4" />
             <p className="text-lg md:text-xl text-foreground leading-relaxed italic">
-              "VicPage hat unsere internen Prozesse komplett transformiert. Innerhalb von 3 Monaten haben wir 40% unserer manuellen Workflows automatisiert."
+              "VicPage hat unsere Vermietungsprozesse komplett digitalisiert. Die Fehlerquote bei Buchungen ist praktisch auf null gesunken."
             </p>
             <div className="mt-6 flex items-center justify-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-vic-indigo flex items-center justify-center text-white font-bold text-sm">
-                MK
-              </div>
+              <img src="/testimonials/maria.png" alt="Maria Krüger" className="w-10 h-10 rounded-full object-cover" />
               <div className="text-left">
                 <p className="text-sm font-semibold text-foreground">Maria Krüger</p>
-                <p className="text-xs text-muted-foreground">COO, TechCorp GmbH</p>
+                <p className="text-xs text-muted-foreground">COO, CX9 Systems GmbH</p>
               </div>
             </div>
           </div>
