@@ -1,23 +1,16 @@
 
+# Adobe Partner Badge -- Interaktive Animationen
 
-# Hero Section: Adobe Partner Badge
-
-Die "40+ Workflows optimiert & skaliert" Trust-Badge mit den Initialen-Avataren wird ersetzt durch eine "Offizieller Adobe Partner" Badge mit echten Adobe-Produktlogos.
+Das Adobe Partner Badge bekommt mehr Interaktivitaet durch Hover-Animationen und Transitions.
 
 ## Aenderungen
 
-**Datei:** `src/components/HeroSection.tsx` (Zeilen 64-80)
+**Datei:** `src/components/HeroSection.tsx` (Zeilen 71-91)
 
-Der aktuelle Block mit den 4 Initialen-Kreisen ("M", "K", "S", "T") und dem Text "40+ Workflows / optimiert & skaliert" wird ersetzt durch:
+- **Badge-Container**: Hover-Effekt mit leichtem Scale-Up (`hover:scale-105`), sanftem Shadow-Wechsel (`hover:shadow-xl`) und smooth Transition
+- **Logo-Kreise**: Beim Hover ueber das Badge spreizen sich die Logos auseinander (von `-space-x-1.5` zu normalem Spacing via `group-hover:translate-x` pro Logo). Jedes Logo bekommt zusaetzlich einen eigenen leichten Bounce/Scale-Effekt mit gestaffeltem Delay
+- **Einzelne Logos**: Hover ueber ein einzelnes Logo zeigt einen Tooltip-artigen Scale (`hover:scale-125 hover:z-10`) und hebt es visuell hervor
+- **Text**: Dezenter Color-Shift beim Hover (z.B. Text wird etwas kraeftiger blau)
+- **Cursor**: `cursor-pointer` fuer besseres Feedback
 
-- **4 Adobe-Produktlogos** als kleine Bilder in runden Containern, geladen von offiziellen/oeffentlichen CDN-URLs:
-  - Adobe Photoshop
-  - Adobe Illustrator
-  - Adobe Premiere Pro
-  - Adobe After Effects
-- **Neuer Text:**
-  - Zeile 1 (fett): "Offizieller Adobe Partner"
-  - Zeile 2 (klein, muted): "Creative Cloud Suite"
-
-Die Logos werden ueber `<img>`-Tags mit oeffentlich verfuegbaren Adobe-Produkticons eingebunden (z.B. von upload.wikimedia.org oder den offiziellen Adobe-Asset-URLs). Der glassmorphism-Card-Style bleibt erhalten.
-
+Alle Animationen nutzen Tailwind `transition-all duration-300` und `group`/`group-hover` Klassen -- kein zusaetzliches CSS noetig.
