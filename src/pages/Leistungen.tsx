@@ -77,7 +77,7 @@ const Leistungen = () => {
       <main>
         <PageHero
           badge="Unsere Leistungen"
-          title={<>Alles was Sie brauchen. <span className="text-gradient-blue">Nichts was Sie nicht brauchen.</span></>}
+          title={<>Alles was Sie brauchen.<br /><span className="text-primary">Nichts was Sie nicht brauchen.</span></>}
           subtitle="Sechs Kernbereiche, ein Ziel: Ihre digitale Performance auf das nächste Level bringen."
         />
 
