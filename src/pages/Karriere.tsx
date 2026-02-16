@@ -77,10 +77,11 @@ const Karriere = () => {
           subtitle="Wir suchen Menschen, die mit Leidenschaft und Kreativität die digitale Zukunft gestalten wollen. Entdecke deine Möglichkeiten bei VicPage."
         />
 
-        {/* Auf einen Blick – Full Width */}
-        <section className="py-12 md:py-16 bg-white">
+        {/* Job Listing mit Auf einen Blick */}
+        <section className="py-20 md:py-28 bg-white">
           <div className="vic-container">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Auf einen Blick */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
               <div className="glass-card-solid rounded-2xl p-6 flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center shrink-0">
                   <MapPin className="w-5 h-5 text-accent-foreground" />
@@ -109,12 +110,6 @@ const Karriere = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Job Listing – 50/50 */}
-        <section className="py-20 md:py-28 bg-white">
-          <div className="vic-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
               {/* Left: Job Details */}
               <div>
