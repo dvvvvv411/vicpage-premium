@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+
 import { useToast } from "@/hooks/use-toast";
 import {
   Briefcase,
@@ -61,7 +61,7 @@ const Karriere = () => {
     zip: "",
     city: "",
     employmentType: "",
-    message: "",
+    
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -70,7 +70,7 @@ const Karriere = () => {
       title: "Bewerbung gesendet",
       description: "Vielen Dank! Wir melden uns innerhalb weniger Tage bei Ihnen.",
     });
-    setFormData({ firstName: "", lastName: "", email: "", phone: "", street: "", zip: "", city: "", employmentType: "", message: "" });
+    setFormData({ firstName: "", lastName: "", email: "", phone: "", street: "", zip: "", city: "", employmentType: "" });
   };
 
   return (
@@ -319,20 +319,6 @@ const Karriere = () => {
                           <SelectItem value="vollzeit">Vollzeit</SelectItem>
                         </SelectContent>
                       </Select>
-                    </div>
-                    <div>
-                      <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5 block">
-                        Anschreiben / Motivation *
-                      </label>
-                      <Textarea
-                        required
-                        maxLength={2000}
-                        rows={4}
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary resize-none"
-                        placeholder="Erzähl uns, warum du bei VicPage arbeiten möchtest..."
-                      />
                     </div>
 
                     <div className="border-2 border-dashed border-border rounded-2xl p-5 text-center hover:border-primary/40 transition-colors cursor-pointer group">
