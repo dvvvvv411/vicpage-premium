@@ -1,5 +1,6 @@
 import { ArrowRight, Sparkles, Star, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from "@/components/ui/tooltip";
 
 const logos = [
   "TechCorp", "DataFlow", "CloudSync", "MediaPro", "NetScale",
@@ -68,27 +69,35 @@ export function HeroSection() {
         </div>
 
         {/* Trust badge */}
-        <div className="mt-12 inline-flex items-center gap-3 glass-card rounded-full px-5 py-2.5 border border-white/40 shadow-lg">
-          <div className="flex -space-x-1.5">
-            {[
-              { src: "https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg", alt: "Adobe Photoshop" },
-              { src: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg", alt: "Adobe Illustrator" },
-              { src: "https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg", alt: "Adobe Premiere Pro" },
-              { src: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg", alt: "Adobe After Effects" },
-            ].map((logo, i) => (
-              <div
-                key={i}
-                className="w-8 h-8 rounded-full border-2 border-white/60 bg-white/80 backdrop-blur-sm flex items-center justify-center overflow-hidden"
-              >
-                <img src={logo.src} alt={logo.alt} className="w-5 h-5 object-contain" />
-              </div>
-            ))}
+        <TooltipProvider delayDuration={200}>
+          <div className="mt-12 inline-flex items-center gap-4 glass-card rounded-2xl px-6 py-4 border border-white/40 shadow-lg hover:shadow-xl hover:shadow-primary/10 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+            <div className="flex items-center gap-2">
+              {[
+                { src: "https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg", alt: "Photoshop" },
+                { src: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg", alt: "Illustrator" },
+                { src: "https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg", alt: "Premiere Pro" },
+                { src: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg", alt: "After Effects" },
+              ].map((logo, i) => (
+                <Tooltip key={i}>
+                  <TooltipTrigger asChild>
+                    <div className="w-10 h-10 rounded-xl bg-white/60 backdrop-blur-sm border border-white/60 flex items-center justify-center hover:bg-white/90 hover:scale-110 transition-all duration-200">
+                      <img src={logo.src} alt={logo.alt} className="w-6 h-6 object-contain" />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent>{logo.alt}</TooltipContent>
+                </Tooltip>
+              ))}
+            </div>
+            <div className="border-l border-white/40 h-8" />
+            <div className="text-left">
+              <p className="text-sm font-semibold text-foreground">Offizieller Adobe Partner</p>
+              <p className="text-xs flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                <span className="text-primary font-medium">Zertifizierter Partner</span>
+              </p>
+            </div>
           </div>
-          <div className="text-left">
-            <p className="text-sm font-semibold text-foreground">Offizieller Adobe Partner</p>
-            <p className="text-xs text-muted-foreground">Creative Cloud Suite</p>
-          </div>
-        </div>
+        </TooltipProvider>
 
         {/* Logo marquee */}
         <div className="mt-20 relative overflow-hidden">
