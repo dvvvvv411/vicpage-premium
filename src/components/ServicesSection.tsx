@@ -78,8 +78,9 @@ export function ServicesSection() {
         <div className="text-center mb-16">
           <div className="section-badge mb-4">Unsere Leistungen</div>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-            Alles was Sie brauchen.{" "}
-            <span className="text-gradient-blue">Nichts was Sie nicht brauchen.</span>
+            Alles was Sie brauchen.
+            <br />
+            <span className="text-primary">Nichts was Sie nicht brauchen.</span>
           </h2>
         </div>
 
