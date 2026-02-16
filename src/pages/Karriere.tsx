@@ -18,6 +18,13 @@ import {
   Calendar,
   Star,
 } from "lucide-react";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
 const tasks = [
   "Entwicklung und Umsetzung kanalübergreifender Marketingstrategien",
@@ -46,10 +53,14 @@ const benefits = [
 const Karriere = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
-    linkedin: "",
+    street: "",
+    zip: "",
+    city: "",
+    employmentType: "",
     message: "",
   });
 
@@ -59,7 +70,7 @@ const Karriere = () => {
       title: "Bewerbung gesendet",
       description: "Vielen Dank! Wir melden uns innerhalb weniger Tage bei Ihnen.",
     });
-    setFormData({ name: "", email: "", phone: "", linkedin: "", message: "" });
+    setFormData({ firstName: "", lastName: "", email: "", phone: "", street: "", zip: "", city: "", employmentType: "", message: "" });
   };
 
   return (
@@ -194,18 +205,33 @@ const Karriere = () => {
                     className="glass-card-solid rounded-2xl p-6 space-y-4"
                   >
                     <h3 className="font-display text-base font-bold text-foreground">Jetzt bewerben</h3>
-                    <div>
-                      <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5 block">
-                        Name *
-                      </label>
-                      <Input
-                        required
-                        maxLength={100}
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary h-11"
-                        placeholder="Dein Name"
-                      />
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5 block">
+                          Vorname *
+                        </label>
+                        <Input
+                          required
+                          maxLength={50}
+                          value={formData.firstName}
+                          onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                          className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary h-11"
+                          placeholder="Vorname"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5 block">
+                          Nachname *
+                        </label>
+                        <Input
+                          required
+                          maxLength={50}
+                          value={formData.lastName}
+                          onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                          className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary h-11"
+                          placeholder="Nachname"
+                        />
+                      </div>
                     </div>
                     <div>
                       <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5 block">
@@ -236,16 +262,63 @@ const Karriere = () => {
                     </div>
                     <div>
                       <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5 block">
-                        LinkedIn (optional)
+                        Straße & Hausnummer *
                       </label>
                       <Input
-                        type="url"
-                        maxLength={255}
-                        value={formData.linkedin}
-                        onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
+                        required
+                        maxLength={100}
+                        value={formData.street}
+                        onChange={(e) => setFormData({ ...formData, street: e.target.value })}
                         className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary h-11"
-                        placeholder="linkedin.com/in/..."
+                        placeholder="Musterstraße 1"
                       />
+                    </div>
+                    <div className="grid grid-cols-3 gap-3">
+                      <div className="col-span-1">
+                        <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5 block">
+                          PLZ *
+                        </label>
+                        <Input
+                          required
+                          maxLength={10}
+                          value={formData.zip}
+                          onChange={(e) => setFormData({ ...formData, zip: e.target.value })}
+                          className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary h-11"
+                          placeholder="10115"
+                        />
+                      </div>
+                      <div className="col-span-2">
+                        <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5 block">
+                          Stadt *
+                        </label>
+                        <Input
+                          required
+                          maxLength={100}
+                          value={formData.city}
+                          onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                          className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary h-11"
+                          placeholder="Berlin"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5 block">
+                        Anstellungsart *
+                      </label>
+                      <Select
+                        value={formData.employmentType}
+                        onValueChange={(value) => setFormData({ ...formData, employmentType: value })}
+                        required
+                      >
+                        <SelectTrigger className="rounded-xl border-border bg-muted/50 focus:ring-primary h-11">
+                          <SelectValue placeholder="Bitte wählen" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="minijob">Minijob</SelectItem>
+                          <SelectItem value="teilzeit">Teilzeit</SelectItem>
+                          <SelectItem value="vollzeit">Vollzeit</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
                     <div>
                       <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5 block">
