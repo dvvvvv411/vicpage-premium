@@ -68,8 +68,8 @@ export function HeroSection() {
         </div>
 
         {/* Trust badge */}
-        <div className="mt-12 inline-flex items-center gap-3 glass-card rounded-full px-5 py-2.5">
-          <div className="flex -space-x-1.5">
+        <div className="group mt-12 inline-flex items-center gap-3 glass-card rounded-full px-5 py-2.5 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl">
+          <div className="flex -space-x-1.5 group-hover:space-x-1 transition-all duration-300">
             {[
               { src: "https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg", alt: "Adobe Photoshop" },
               { src: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg", alt: "Adobe Illustrator" },
@@ -78,14 +78,15 @@ export function HeroSection() {
             ].map((logo, i) => (
               <div
                 key={i}
-                className="w-8 h-8 rounded-full border-2 border-white bg-white flex items-center justify-center overflow-hidden"
+                className="w-8 h-8 rounded-full border-2 border-white bg-white flex items-center justify-center overflow-hidden transition-all duration-300 hover:scale-125 hover:z-10 hover:shadow-md"
+                style={{ transitionDelay: `${i * 50}ms` }}
               >
                 <img src={logo.src} alt={logo.alt} className="w-5 h-5 object-contain" />
               </div>
             ))}
           </div>
-          <div className="text-left">
-            <p className="text-sm font-semibold text-foreground">Offizieller Adobe Partner</p>
+          <div className="text-left transition-colors duration-300">
+            <p className="text-sm font-semibold text-foreground group-hover:text-primary">Offizieller Adobe Partner</p>
             <p className="text-xs text-muted-foreground">Creative Cloud Suite</p>
           </div>
         </div>
