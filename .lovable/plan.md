@@ -1,23 +1,19 @@
 
 
-# Hero Section: Adobe Partner Badge
+# Adobe Partner Badge: Glassmorphism-Upgrade
 
-Die "40+ Workflows optimiert & skaliert" Trust-Badge mit den Initialen-Avataren wird ersetzt durch eine "Offizieller Adobe Partner" Badge mit echten Adobe-Produktlogos.
+Die Trust-Badge mit den Adobe-Logos soll staerker im Glassmorphism-Stil der restlichen Seite gestaltet werden.
 
-## Aenderungen
+## Aenderung
 
-**Datei:** `src/components/HeroSection.tsx` (Zeilen 64-80)
+**Datei:** `src/components/HeroSection.tsx` (Zeile 71)
 
-Der aktuelle Block mit den 4 Initialen-Kreisen ("M", "K", "S", "T") und dem Text "40+ Workflows / optimiert & skaliert" wird ersetzt durch:
+Aktuell nutzt die Badge bereits `glass-card`, aber die inneren Logo-Kreise haben einen harten weissen Hintergrund (`bg-white`), der nicht zum glasigen Look passt.
 
-- **4 Adobe-Produktlogos** als kleine Bilder in runden Containern, geladen von offiziellen/oeffentlichen CDN-URLs:
-  - Adobe Photoshop
-  - Adobe Illustrator
-  - Adobe Premiere Pro
-  - Adobe After Effects
-- **Neuer Text:**
-  - Zeile 1 (fett): "Offizieller Adobe Partner"
-  - Zeile 2 (klein, muted): "Creative Cloud Suite"
+Anpassungen:
+- **Aeussere Badge**: Erhaelt zusaetzlich `backdrop-blur-xl`, eine leicht transparente Hintergrundfarbe (`bg-white/60`) und einen subtilen `shadow-lg` fuer mehr Tiefe
+- **Logo-Kreise**: Statt `bg-white` mit hartem Rand werden sie `bg-white/80 backdrop-blur-sm` mit einem weicheren `border-white/60` erhalten
+- **Gesamter Container**: Bekommt einen leichten `border border-white/40` fuer den typischen Glas-Effekt
 
-Die Logos werden ueber `<img>`-Tags mit oeffentlich verfuegbaren Adobe-Produkticons eingebunden (z.B. von upload.wikimedia.org oder den offiziellen Adobe-Asset-URLs). Der glassmorphism-Card-Style bleibt erhalten.
+Das Ergebnis ist ein schwebendes, leicht durchscheinendes Element, das sich nahtlos in den Hero-Hintergrund einfuegt.
 
