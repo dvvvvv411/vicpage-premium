@@ -68,7 +68,7 @@ export function HeroSection() {
         </div>
 
         {/* Trust badge */}
-        <div className="mt-12 inline-flex items-center gap-3 glass-card rounded-full px-5 py-2.5">
+        <div className="mt-12 inline-flex items-center gap-3 glass-card rounded-full px-5 py-2.5 border border-white/40 shadow-lg">
           <div className="flex -space-x-1.5">
             {[
               { src: "https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg", alt: "Adobe Photoshop" },
@@ -78,7 +78,7 @@ export function HeroSection() {
             ].map((logo, i) => (
               <div
                 key={i}
-                className="w-8 h-8 rounded-full border-2 border-white bg-white flex items-center justify-center overflow-hidden"
+                className="w-8 h-8 rounded-full border-2 border-white/60 bg-white/80 backdrop-blur-sm flex items-center justify-center overflow-hidden"
               >
                 <img src={logo.src} alt={logo.alt} className="w-5 h-5 object-contain" />
               </div>
