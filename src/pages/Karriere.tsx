@@ -62,10 +62,6 @@ const Karriere = () => {
     setFormData({ name: "", email: "", phone: "", linkedin: "", message: "" });
   };
 
-  const scrollToForm = () => {
-    document.getElementById("bewerbungsformular")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -162,7 +158,7 @@ const Karriere = () => {
                 </div>
               </div>
 
-              {/* Right: Sticky Sidebar */}
+              {/* Right: Sticky Sidebar with Form */}
               <div className="lg:col-span-2">
                 <div className="lg:sticky lg:top-28 space-y-6">
                   <div className="glass-card-solid rounded-2xl p-6 space-y-5">
@@ -198,143 +194,97 @@ const Karriere = () => {
                     </div>
                   </div>
 
-                  <button
-                    onClick={scrollToForm}
-                    className="pill-button-primary px-8 py-3.5 text-sm w-full gap-2"
+                  {/* Application Form */}
+                  <form
+                    onSubmit={handleSubmit}
+                    className="glass-card-solid rounded-2xl p-6 space-y-4"
                   >
-                    <Send className="w-4 h-4" />
-                    Jetzt bewerben
-                  </button>
+                    <h3 className="font-display text-base font-bold text-foreground">Jetzt bewerben</h3>
+                    <div>
+                      <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5 block">
+                        Name *
+                      </label>
+                      <Input
+                        required
+                        maxLength={100}
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary h-11"
+                        placeholder="Dein Name"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5 block">
+                        E-Mail *
+                      </label>
+                      <Input
+                        type="email"
+                        required
+                        maxLength={255}
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary h-11"
+                        placeholder="deine@email.de"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5 block">
+                        Telefon
+                      </label>
+                      <Input
+                        type="tel"
+                        maxLength={30}
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary h-11"
+                        placeholder="+49 ..."
+                      />
+                    </div>
+                    <div>
+                      <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5 block">
+                        LinkedIn (optional)
+                      </label>
+                      <Input
+                        type="url"
+                        maxLength={255}
+                        value={formData.linkedin}
+                        onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
+                        className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary h-11"
+                        placeholder="linkedin.com/in/..."
+                      />
+                    </div>
+                    <div>
+                      <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5 block">
+                        Anschreiben / Motivation *
+                      </label>
+                      <Textarea
+                        required
+                        maxLength={2000}
+                        rows={4}
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary resize-none"
+                        placeholder="Erzähl uns, warum du bei VicPage arbeiten möchtest..."
+                      />
+                    </div>
+
+                    <div className="border-2 border-dashed border-border rounded-2xl p-5 text-center hover:border-primary/40 transition-colors cursor-pointer group">
+                      <Upload className="w-7 h-7 text-muted-foreground mx-auto mb-2 group-hover:text-primary transition-colors" />
+                      <p className="text-sm font-medium text-foreground">Lebenslauf hochladen</p>
+                      <p className="text-xs text-muted-foreground mt-1">PDF, DOC oder DOCX · max. 10 MB</p>
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="pill-button-primary px-8 py-3 text-sm w-full gap-2"
+                    >
+                      <Send className="w-4 h-4" />
+                      Bewerbung absenden
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Application Form */}
-        <section className="relative" id="bewerbungsformular">
-          <div className="w-full">
-            <svg viewBox="0 0 1440 60" fill="none" className="w-full block">
-              <path d="M0 0L1440 0L1440 20C1440 20 1080 60 720 60C360 60 0 20 0 20L0 0Z" fill="white" />
-            </svg>
-          </div>
-          <div className="bg-gradient-to-br from-accent via-vic-blue-light/60 to-vic-indigo-light py-20 md:py-28">
-            <div className="absolute top-20 right-16 opacity-10 animate-float">
-              <Sparkles className="w-12 h-12 text-primary" />
-            </div>
-
-            <div className="vic-container">
-              <div className="text-center mb-12">
-                <div className="section-badge mb-4">Bewerbung</div>
-                <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-                  Wir freuen uns auf <span className="text-gradient-blue">dich</span>
-                </h2>
-                <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-                  Fülle das Formular aus und erzähle uns, warum du zu VicPage passt.
-                </p>
-              </div>
-
-              <form
-                onSubmit={handleSubmit}
-                className="max-w-3xl mx-auto glass-card rounded-2xl p-8 md:p-10 space-y-5"
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2 block">
-                      Name *
-                    </label>
-                    <Input
-                      required
-                      maxLength={100}
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary h-12"
-                      placeholder="Dein Name"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2 block">
-                      E-Mail *
-                    </label>
-                    <Input
-                      type="email"
-                      required
-                      maxLength={255}
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary h-12"
-                      placeholder="deine@email.de"
-                    />
-                  </div>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2 block">
-                      Telefon
-                    </label>
-                    <Input
-                      type="tel"
-                      maxLength={30}
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary h-12"
-                      placeholder="+49 ..."
-                    />
-                  </div>
-                  <div>
-                    <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2 block">
-                      LinkedIn (optional)
-                    </label>
-                    <Input
-                      type="url"
-                      maxLength={255}
-                      value={formData.linkedin}
-                      onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
-                      className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary h-12"
-                      placeholder="linkedin.com/in/..."
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2 block">
-                    Anschreiben / Motivation *
-                  </label>
-                  <Textarea
-                    required
-                    maxLength={2000}
-                    rows={5}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary resize-none"
-                    placeholder="Erzähl uns, warum du bei VicPage arbeiten möchtest..."
-                  />
-                </div>
-
-                {/* File Upload Area (UI only) */}
-                <div className="border-2 border-dashed border-border rounded-2xl p-6 text-center hover:border-primary/40 transition-colors cursor-pointer group">
-                  <Upload className="w-8 h-8 text-muted-foreground mx-auto mb-3 group-hover:text-primary transition-colors" />
-                  <p className="text-sm font-medium text-foreground">
-                    Lebenslauf hochladen
-                  </p>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    PDF, DOC oder DOCX · max. 10 MB
-                  </p>
-                </div>
-
-                <button
-                  type="submit"
-                  className="pill-button-primary px-8 py-3.5 text-sm w-full gap-2"
-                >
-                  <Send className="w-4 h-4" />
-                  Bewerbung absenden
-                </button>
-              </form>
-            </div>
-          </div>
-          <div className="w-full">
-            <svg viewBox="0 0 1440 60" fill="none" className="w-full block">
-              <path d="M0 60L1440 60L1440 40C1440 40 1080 0 720 0C360 0 0 40 0 40L0 60Z" fill="white" />
-            </svg>
           </div>
         </section>
 
