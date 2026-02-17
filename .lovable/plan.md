@@ -1,28 +1,33 @@
 
 
-# Preise anpassen
+# Kleinere Nischen-Unternehmen im Logo-Marquee
 
 ## Aenderung
 
-Die monatlichen Verguetungen werden auf die neuen Netto-Betraege aktualisiert – ueberall wo sie erscheinen.
+Statt grosser Konzerne wie Miele oder Stihl werden kleinere, digitale Nischen-Unternehmen verwendet, die besser zu einer Digitalagentur passen.
 
-## Technische Aenderung
+## Ausgewaehlte Unternehmen
 
-**Datei:** `src/pages/Karriere.tsx`
+Acht kleinere deutsche Online-/Digital-Unternehmen:
 
-Drei Stellen werden angepasst:
+1. **Personio** – HR-Software fuer KMUs
+2. **Celonis** – Process Mining
+3. **Adjust** – Mobile-Analytics
+4. **Contentful** – Headless CMS
+5. **Staffbase** – Mitarbeiter-Kommunikation
+6. **Sennder** – Digitale Logistik
+7. **Taxfix** – Steuer-App
+8. **Billie** – B2B-Zahlungen
 
-1. **`positions`-Array** (oben in der Datei):
-   - Vollzeit: "3.400,00 EUR" wird zu "3.050,00 EUR"
-   - Teilzeit: "1.600,00 EUR" wird zu "1.650,00 EUR"
-   - Minijob: bleibt "603,00 EUR"
+## Technische Umsetzung
 
-2. **Verguetungssektion** (Karten im linken Bereich): Wird automatisch aus dem Array gerendert, daher keine separate Aenderung noetig.
+**Datei:** `src/components/HeroSection.tsx`
 
-3. **Dropdown-Optionen** (SelectItems im Formular):
-   - "Minijob – 603,00 EUR/Monat" bleibt
-   - "Teilzeit – 1.600,00 EUR/Monat" wird zu "Teilzeit – 1.650,00 EUR netto/Monat"
-   - "Vollzeit – 3.400,00 EUR/Monat" wird zu "Vollzeit – 3.050,00 EUR netto/Monat"
+1. **`logos`-Array ersetzen**: Statt der bisherigen String-Liste wird ein Array mit `{ name, logoUrl }` Objekten verwendet. Die Logo-URLs stammen von oeffentlich zugaenglichen Quellen (z.B. Wikimedia Commons, offizielle Brand-Assets, oder logo.clearbit.com).
 
-Zusaetzlich wird ueberall "netto" ergaenzt, damit die Angabe eindeutig ist.
+2. **Marquee-Rendering anpassen**: Statt Platzhalter-Buchstaben werden `<img>`-Tags mit den echten Logos gerendert. Darstellung in Graustufen mit reduzierter Opacity, Hover-Effekt bringt Farbe zurueck.
+
+3. **Nur Logos, kein Text**: Wie gewuenscht werden ausschliesslich die Logo-Grafiken ohne begleitende Firmennamen angezeigt.
+
+4. **Styling**: Einheitliche Hoehe (28-32px), `object-contain`, `grayscale` + `opacity-50`, bei Hover `grayscale-0 opacity-100`.
 
