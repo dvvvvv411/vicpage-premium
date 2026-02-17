@@ -35,7 +35,7 @@ export function Navbar() {
     >
       <div className="vic-container flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="font-display text-xl font-bold tracking-tight text-foreground">
-          <img src={logo} alt="47skys" className="h-8 w-auto" />
+          <img src={logo} alt="47skys" className="h-12 w-auto" />
         </Link>
 
         {/* Desktop nav */}
