@@ -1,30 +1,20 @@
 
-
-# Erfolgs-Popup Feinschliff
+# Footer Navigation in 2 Spalten aufteilen
 
 ## Uebersicht
 
-Drei kleine Anpassungen am Erfolgs-Dialog in `src/pages/Karriere.tsx`.
+Die 5 Navigationslinks im Footer werden aktuell untereinander aufgelistet. Sie werden stattdessen in ein 2-Spalten-Grid aufgeteilt, damit die Spalte kompakter wird.
 
-## Aenderungen
+## Aenderung
 
-### 1. Weisser Hintergrund statt grau/transparent
+Datei: `src/components/Footer.tsx` (Zeile 23)
 
-`bg-white/80` wird zu `bg-white` geaendert, damit der Hintergrund rein weiss ist.
+Das `div` mit `flex flex-col` wird zu einem `grid grid-cols-2 gap-x-8 gap-y-2.5` geaendert. Die 5 Links verteilen sich dann so:
 
-### 2. Titel zentrieren
+```text
+Leistungen    Karriere
+Ergebnisse    Kontakt
+Arbeitsweise
+```
 
-`DialogTitle` bekommt `text-center w-full` damit der Text mittig steht statt linksbuendig.
-
-### 3. Beschreibungstext auf 2 Zeilen
-
-Der Text wird aufgeteilt in zwei Zeilen:
-- Zeile 1: "Vielen Dank fuer deine Bewerbung."
-- Zeile 2: "Wir werden uns in Kuerze bei dir melden."
-
-Umgesetzt mit einem `<br />` Tag innerhalb der DialogDescription.
-
-## Technische Details
-
-Alle Aenderungen betreffen nur den Dialog-Block in `src/pages/Karriere.tsx` (ca. Zeilen 450-470).
-
+Nur eine Zeile CSS-Klassen aendert sich, keine strukturellen Umbauten noetig.
