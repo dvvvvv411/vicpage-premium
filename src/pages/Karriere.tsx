@@ -50,9 +50,9 @@ const benefits = [
 ];
 
 const positions = [
-  { type: "Minijob", hours: "10 Stunden / Woche", salary: "603,00 €" },
-  { type: "Teilzeit", hours: "20 Stunden / Woche", salary: "1.600,00 €" },
-  { type: "Vollzeit", hours: "40 Stunden / Woche", salary: "3.400,00 €" },
+  { type: "Minijob", hours: "10 Stunden / Woche", salary: "603,00 € netto" },
+  { type: "Teilzeit", hours: "20 Stunden / Woche", salary: "1.650,00 € netto" },
+  { type: "Vollzeit", hours: "40 Stunden / Woche", salary: "3.050,00 € netto" },
 ];
 
 const Karriere = () => {
@@ -337,9 +337,9 @@ const Karriere = () => {
                           <SelectValue placeholder="Bitte wählen" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="minijob">Minijob – 603,00 EUR/Monat</SelectItem>
-                          <SelectItem value="teilzeit">Teilzeit – 1.600,00 EUR/Monat</SelectItem>
-                          <SelectItem value="vollzeit">Vollzeit – 3.400,00 EUR/Monat</SelectItem>
+                          <SelectItem value="minijob">Minijob – 603,00 EUR netto/Monat</SelectItem>
+                          <SelectItem value="teilzeit">Teilzeit – 1.650,00 EUR netto/Monat</SelectItem>
+                          <SelectItem value="vollzeit">Vollzeit – 3.050,00 EUR netto/Monat</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
