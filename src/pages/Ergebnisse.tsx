@@ -42,10 +42,10 @@ const caseStudies = [
 ];
 
 const testimonials = [
-  { quote: "VicPage hat unsere Vermietungsprozesse komplett digitalisiert. Die Fehlerquote bei Buchungen ist praktisch auf null gesunken.", name: "Maria Krüger", role: "COO, CX9 Systems GmbH", image: "/testimonials/maria.png" },
-  { quote: "Pragmatisch, datengetrieben und immer auf Augenhöhe. VicPage hat unser Lead-Management auf ein völlig neues Level gehoben.", name: "Stefan Weber", role: "CMO, Carwow GmbH", image: "/testimonials/stefan.png" },
-  { quote: "Dank VicPage produzieren wir heute in einem Tag, wofür wir früher eine Woche gebraucht haben. Die Ergebnisse beim organischen Traffic sprechen für sich.", name: "Anna Fischer", role: "Head of Content, HomeToGo GmbH", image: "/testimonials/anna.png" },
-  { quote: "Die Dashboards von VicPage haben uns erstmals einen vollständigen Überblick über unsere gesamte Flotte in Echtzeit gegeben.", name: "Sebastian Scholz", role: "CEO, CX9 Systems GmbH", image: "/testimonials/thomas.png" },
+  { quote: "47skys hat unsere Vermietungsprozesse komplett digitalisiert. Die Fehlerquote bei Buchungen ist praktisch auf null gesunken.", name: "Maria Krüger", role: "COO, CX9 Systems GmbH", image: "/testimonials/maria.png" },
+  { quote: "Pragmatisch, datengetrieben und immer auf Augenhöhe. 47skys hat unser Lead-Management auf ein völlig neues Level gehoben.", name: "Stefan Weber", role: "CMO, Carwow GmbH", image: "/testimonials/stefan.png" },
+  { quote: "Dank 47skys produzieren wir heute in einem Tag, wofür wir früher eine Woche gebraucht haben. Die Ergebnisse beim organischen Traffic sprechen für sich.", name: "Anna Fischer", role: "Head of Content, HomeToGo GmbH", image: "/testimonials/anna.png" },
+  { quote: "Die Dashboards von 47skys haben uns erstmals einen vollständigen Überblick über unsere gesamte Flotte in Echtzeit gegeben.", name: "Sebastian Scholz", role: "CEO, CX9 Systems GmbH", image: "/testimonials/thomas.png" },
 ];
 
 const Ergebnisse = () => {

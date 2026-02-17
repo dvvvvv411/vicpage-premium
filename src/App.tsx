@@ -10,6 +10,8 @@ import Ergebnisse from "./pages/Ergebnisse";
 import Arbeitsweise from "./pages/Arbeitsweise";
 import Kontakt from "./pages/Kontakt";
 import Karriere from "./pages/Karriere";
+import Impressum from "./pages/Impressum";
+import Datenschutz from "./pages/Datenschutz";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +30,8 @@ const App = () => (
           <Route path="/arbeitsweise" element={<Arbeitsweise />} />
           <Route path="/karriere" element={<Karriere />} />
           <Route path="/kontakt" element={<Kontakt />} />
+          <Route path="/impressum" element={<Impressum />} />
+          <Route path="/datenschutz" element={<Datenschutz />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

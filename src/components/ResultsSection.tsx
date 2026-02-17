@@ -52,7 +52,7 @@ export function ResultsSection() {
           <div className="mt-16 max-w-2xl mx-auto glass-card rounded-2xl p-8 md:p-10 text-center">
             <Quote className="w-8 h-8 text-primary/30 mx-auto mb-4" />
             <p className="text-lg md:text-xl text-foreground leading-relaxed italic">
-              "VicPage hat unsere Vermietungsprozesse komplett digitalisiert. Die Fehlerquote bei Buchungen ist praktisch auf null gesunken."
+              "47skys hat unsere Vermietungsprozesse komplett digitalisiert. Die Fehlerquote bei Buchungen ist praktisch auf null gesunken."
             </p>
             <div className="mt-6 flex items-center justify-center gap-3">
               <img src="/testimonials/maria.png" alt="Maria Krüger" className="w-10 h-10 rounded-full object-cover" />

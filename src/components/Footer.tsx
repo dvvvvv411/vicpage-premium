@@ -9,7 +9,7 @@ export function Footer() {
           {/* Logo & Description */}
           <div>
             <Link to="/" className="font-display text-xl font-bold text-foreground">
-              Vic<span className="text-primary">Page</span>
+              47<span className="text-primary">skys</span>
             </Link>
             <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
               Digitale Medienagentur für Prozessoptimierung, Performance Marketing und datengetriebenes Wachstum.
@@ -32,11 +32,11 @@ export function Footer() {
           <div>
             <h4 className="font-display font-semibold text-foreground mb-4">Kontakt</h4>
             <div className="flex flex-col gap-2.5">
-              <a href="mailto:info@vicpage.de" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                <Mail className="w-4 h-4" /> info@vicpage.de
+              <a href="mailto:info@47-skys.de" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
+                <Mail className="w-4 h-4" /> info@47-skys.de
               </a>
-              <a href="tel:+4917612345678" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                <Phone className="w-4 h-4" /> +49 176 1234 5678
+              <a href="tel:+4961316365858" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
+                <Phone className="w-4 h-4" /> 06131-6365858
               </a>
             </div>
           </div>
@@ -46,11 +46,11 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} VicPage. Alle Rechte vorbehalten.
+            © {new Date().getFullYear()} 47skys. Alle Rechte vorbehalten.
           </p>
           <div className="flex gap-6">
-            <Link to="#" className="text-xs text-muted-foreground hover:text-primary transition-colors">Impressum</Link>
-            <Link to="#" className="text-xs text-muted-foreground hover:text-primary transition-colors">Datenschutz</Link>
+            <Link to="/impressum" className="text-xs text-muted-foreground hover:text-primary transition-colors">Impressum</Link>
+            <Link to="/datenschutz" className="text-xs text-muted-foreground hover:text-primary transition-colors">Datenschutz</Link>
           </div>
         </div>
       </div>
