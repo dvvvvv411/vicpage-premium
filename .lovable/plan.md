@@ -1,24 +1,26 @@
 
 
-# Personio, Contentful und Staffbase SVGs neu schreiben
+# 3 Meta Pixel Codes in index.html einfuegen
 
-## Problem
+## Was passiert
 
-Die drei Logos fuer Personio, Contentful und Staffbase werden moeglicherweise noch als Text angezeigt, obwohl die aktuellen Dateien bereits echte SVG-Pfade enthalten. Dies kann an einem Cache-Problem liegen oder daran, dass die Dateien nicht korrekt ueberschrieben wurden.
+Alle 3 Meta Pixel Scripte werden **exakt so wie du sie geschickt hast** in die `index.html` eingefuegt -- kein eigener Code, keine Aenderungen an den Scripts.
 
-## Loesung
+## Wo genau
 
-Die drei SVG-Dateien werden nochmal explizit neu geschrieben, um sicherzustellen, dass die echten Simple Icons Grafiken korrekt gespeichert sind. Die Pfade sind bereits korrekt (verifiziert durch Dateipruefung), es geht nur darum, das Speichern zu erzwingen.
+Die 3 Pixel-Codes werden direkt vor dem schliessenden `</head>`-Tag in `index.html` eingefuegt (Zeile 19). Das ist der Standard-Ort fuer Tracking-Scripte.
 
-## Betroffene Dateien
+## Die 3 Pixel-IDs
 
-1. **`public/logos/personio.svg`** - Neu schreiben mit dem echten Personio-Icon (Schwalben-/Wellenform)
-2. **`public/logos/contentful.svg`** - Neu schreiben mit dem echten Contentful-Icon (Blob mit Punkten)
-3. **`public/logos/staffbase.svg`** - Neu schreiben mit dem echten Staffbase-Icon (Smiley-Kreis)
+1. `1702586507767761`
+2. `1964178791198665`
+3. `1175777237872122`
 
-Keine Aenderungen an `HeroSection.tsx` noetig - die Pfade im `logos`-Array sind bereits korrekt.
+## Betroffene Datei
 
-## Ergebnis
+- `index.html` -- Die 3 Script-Bloecke und die zugehoerigen `<noscript>`-Tags werden 1:1 eingefuegt
 
-Alle 8 Logos im Marquee werden als echte grafische Icons dargestellt, keine Text-Elemente mehr.
+## Wichtiger Hinweis
+
+Da das Meta Pixel SDK (`fbevents.js`) eine `if(f.fbq)return`-Pruefung hat, wird das SDK nur einmal geladen. Alle 3 `fbq('init', ...)` Aufrufe registrieren aber jeweils ihre eigene Pixel-ID, sodass Events an alle 3 Pixel gesendet werden.
 
