@@ -1,19 +1,20 @@
 
 
-# Stellentitel aendern
+# Verdienst im Dropdown anzeigen
 
 ## Aenderung
 
-Der Stellentitel wird von "Qualitaetspruefer / Produkttester (m/w/d)" zu "Auftragsbearbeiter im Bereich Datenerfassung (m/w/d)" geaendert.
+Die drei Optionen im "Anstellungsart"-Dropdown werden um die monatliche Verguetung ergaenzt.
 
 ## Technische Aenderung
 
 **Datei:** `src/pages/Karriere.tsx`
 
-An zwei Stellen wird der Titel aktualisiert:
+Die `SelectItem`-Texte werden aktualisiert:
 
-1. **Haupttitel** (ca. Zeile 133): Der `<h2>`-Text wird zu "Auftragsbearbeiter im Bereich Datenerfassung (m/w/d)"
-2. **Badge "Keine Vorerfahrung noetig"** bleibt bestehen, da es weiterhin passt
+- "Minijob" wird zu "Minijob – 603,00 EUR/Monat"
+- "Teilzeit" wird zu "Teilzeit – 1.600,00 EUR/Monat"
+- "Vollzeit" wird zu "Vollzeit – 3.400,00 EUR/Monat"
 
-Sonst keine weiteren Aenderungen noetig.
+Keine weiteren Aenderungen noetig.
 
