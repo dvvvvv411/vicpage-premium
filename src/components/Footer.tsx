@@ -20,7 +20,7 @@ export function Footer() {
           {/* Navigation */}
           <div>
             <h4 className="font-display font-semibold text-foreground mb-4">Navigation</h4>
-            <div className="flex flex-col gap-2.5">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-2.5">
               <Link to="/leistungen" className="text-sm text-muted-foreground hover:text-primary transition-colors">Leistungen</Link>
               <Link to="/ergebnisse" className="text-sm text-muted-foreground hover:text-primary transition-colors">Ergebnisse</Link>
               <Link to="/arbeitsweise" className="text-sm text-muted-foreground hover:text-primary transition-colors">Arbeitsweise</Link>
