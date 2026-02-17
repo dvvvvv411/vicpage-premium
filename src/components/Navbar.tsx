@@ -33,8 +33,16 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="vic-container flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="font-display text-xl font-bold tracking-tight text-foreground">
+      <div className="vic-container relative flex items-center justify-between h-16 md:h-20">
+        {/* Mobile: hamburger left, logo center. Desktop: logo left */}
+        <button className="md:hidden p-2 text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
+          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+
+        <Link
+          to="/"
+          className="absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0 font-display text-xl font-bold tracking-tight text-foreground"
+        >
           <img src={logo} alt="47skys" className="h-12 w-auto" />
         </Link>
 
@@ -58,10 +66,8 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile toggle */}
-        <button className="md:hidden p-2 text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        {/* Spacer for mobile to balance the hamburger */}
+        <div className="md:hidden w-[38px]" />
       </div>
 
       {/* Mobile menu */}
