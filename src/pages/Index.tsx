@@ -5,6 +5,7 @@ import { ResultsSection } from "@/components/ResultsSection";
 import { ProcessSection } from "@/components/ProcessSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
+import { CookieConsent } from "@/components/CookieConsent";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
@@ -41,6 +42,7 @@ const Index = () => {
         <div className="h-12" />
         <ContactSection />
       </main>
+      <CookieConsent />
       <Footer />
     </div>
   );
