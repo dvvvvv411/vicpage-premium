@@ -90,7 +90,7 @@ const Karriere = () => {
               <span className="text-gradient-blue">Teams</span>
             </>
           }
-          subtitle="Wir suchen Menschen, die mit Leidenschaft und Kreativität die digitale Zukunft gestalten wollen. Entdecke deine Möglichkeiten bei VicPage."
+          subtitle="Wir suchen Menschen, die mit Leidenschaft und Kreativität die digitale Zukunft gestalten wollen. Entdecke deine Möglichkeiten bei 47skys."
         />
 
         {/* Job Listing mit Auf einen Blick */}

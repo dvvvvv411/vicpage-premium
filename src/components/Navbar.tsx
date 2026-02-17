@@ -34,7 +34,7 @@ export function Navbar() {
     >
       <div className="vic-container flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="font-display text-xl font-bold tracking-tight text-foreground">
-          Vic<span className="text-gradient-blue">Page</span>
+          47<span className="text-gradient-blue">skys</span>
         </Link>
 
         {/* Desktop nav */}

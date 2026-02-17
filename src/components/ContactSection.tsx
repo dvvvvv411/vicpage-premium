@@ -41,8 +41,8 @@ export function ContactSection() {
                 Lassen Sie uns in einem unverbindlichen Gespräch herausfinden, wie wir Ihre Workflows optimieren können.
               </p>
               <div className="mt-10 space-y-3 text-white/60 text-sm">
-                <p>kontakt@vicpage.de</p>
-                <p>+49 30 123 456 78</p>
+                <p>info@47-skys.de</p>
+                <p>06131-6365858</p>
               </div>
             </div>
 

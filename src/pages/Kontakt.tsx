@@ -8,9 +8,9 @@ import { useToast } from "@/hooks/use-toast";
 import { Send, Mail, Phone, MapPin, ChevronDown } from "lucide-react";
 
 const contactInfo = [
-  { icon: Mail, label: "E-Mail", value: "kontakt@vicpage.de" },
-  { icon: Phone, label: "Telefon", value: "+49 30 123 456 78" },
-  { icon: MapPin, label: "Standort", value: "Berlin, Deutschland" },
+  { icon: Mail, label: "E-Mail", value: "info@47-skys.de" },
+  { icon: Phone, label: "Telefon", value: "06131-6365858" },
+  { icon: MapPin, label: "Standort", value: "Mainz, Deutschland" },
 ];
 
 const faqs = [
@@ -98,7 +98,7 @@ const Kontakt = () => {
                 <div className="rounded-2xl bg-gradient-to-br from-accent to-vic-blue-light border border-primary/10 h-48 flex items-center justify-center">
                   <div className="text-center">
                     <MapPin className="w-8 h-8 text-primary/30 mx-auto mb-2" />
-                    <p className="text-xs text-muted-foreground">Berlin, Deutschland</p>
+                    <p className="text-xs text-muted-foreground">Mainz, Deutschland</p>
                   </div>
                 </div>
               </div>
