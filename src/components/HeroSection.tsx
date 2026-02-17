@@ -2,8 +2,14 @@ import { ArrowRight, Sparkles, Star, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const logos = [
-  "TechCorp", "DataFlow", "CloudSync", "MediaPro", "NetScale",
-  "SmartOps", "InnoLab", "StreamX",
+  { name: "Personio", logoUrl: "https://logo.clearbit.com/personio.de" },
+  { name: "Celonis", logoUrl: "https://logo.clearbit.com/celonis.com" },
+  { name: "Adjust", logoUrl: "https://logo.clearbit.com/adjust.com" },
+  { name: "Contentful", logoUrl: "https://logo.clearbit.com/contentful.com" },
+  { name: "Staffbase", logoUrl: "https://logo.clearbit.com/staffbase.com" },
+  { name: "Sennder", logoUrl: "https://logo.clearbit.com/sennder.com" },
+  { name: "Taxfix", logoUrl: "https://logo.clearbit.com/taxfix.de" },
+  { name: "Billie", logoUrl: "https://logo.clearbit.com/billie.io" },
 ];
 
 export function HeroSection() {
@@ -97,19 +103,14 @@ export function HeroSection() {
             Vertraut von führenden Unternehmen
           </p>
           <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-            <div className="animate-marquee flex items-center gap-12 min-w-max">
-              {[...logos, ...logos].map((name, i) => (
-                <div
+            <div className="animate-marquee flex items-center gap-16 min-w-max">
+              {[...logos, ...logos].map((logo, i) => (
+                <img
                   key={i}
-                  className="flex items-center gap-2 text-muted-foreground/40 hover:text-muted-foreground/60 transition-colors"
-                >
-                  <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center">
-                    <span className="text-xs font-bold text-muted-foreground/50">
-                      {name[0]}
-                    </span>
-                  </div>
-                  <span className="text-sm font-semibold whitespace-nowrap">{name}</span>
-                </div>
+                  src={logo.logoUrl}
+                  alt={logo.name}
+                  className="h-8 w-auto object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                />
               ))}
             </div>
           </div>
