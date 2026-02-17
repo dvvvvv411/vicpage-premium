@@ -1,35 +1,24 @@
 
 
-# Echte Logos aus Simple Icons (CC0-Lizenz)
+# Personio, Contentful und Staffbase SVGs neu schreiben
 
 ## Problem
 
-Die aktuellen SVG-Dateien enthalten nur Text-Elemente, die als einfacher Text gerendert werden -- keine echten grafischen Logos.
+Die drei Logos fuer Personio, Contentful und Staffbase werden moeglicherweise noch als Text angezeigt, obwohl die aktuellen Dateien bereits echte SVG-Pfade enthalten. Dies kann an einem Cache-Problem liegen oder daran, dass die Dateien nicht korrekt ueberschrieben wurden.
 
 ## Loesung
 
-Die Simple Icons Bibliothek (simpleicons.org) bietet ueber 3.300 echte Markenlogos als SVG unter der CC0-Lizenz (voellig frei nutzbar). Die Logos werden als lokale SVG-Dateien gespeichert.
+Die drei SVG-Dateien werden nochmal explizit neu geschrieben, um sicherzustellen, dass die echten Simple Icons Grafiken korrekt gespeichert sind. Die Pfade sind bereits korrekt (verifiziert durch Dateipruefung), es geht nur darum, das Speichern zu erzwingen.
 
-## Neue Unternehmensauswahl
+## Betroffene Dateien
 
-Nicht alle bisherigen Firmen sind bei Simple Icons verfuegbar (Celonis, Adjust, Sennder, Taxfix, Billie fehlen). Die neue Auswahl besteht aus digitalen Nischen-Unternehmen, die alle echte grafische Logos haben:
+1. **`public/logos/personio.svg`** - Neu schreiben mit dem echten Personio-Icon (Schwalben-/Wellenform)
+2. **`public/logos/contentful.svg`** - Neu schreiben mit dem echten Contentful-Icon (Blob mit Punkten)
+3. **`public/logos/staffbase.svg`** - Neu schreiben mit dem echten Staffbase-Icon (Smiley-Kreis)
 
-1. **Personio** -- HR-Software (behalten)
-2. **Contentful** -- Headless CMS (behalten)
-3. **Staffbase** -- Mitarbeiter-Kommunikation (behalten)
-4. **Notion** -- Produktivitaets-Tool
-5. **Asana** -- Projektmanagement
-6. **Miro** -- Online-Whiteboard
-7. **Linear** -- Issue-Tracking
-8. **HubSpot** -- Marketing/CRM
+Keine Aenderungen an `HeroSection.tsx` noetig - die Pfade im `logos`-Array sind bereits korrekt.
 
-## Technische Umsetzung
+## Ergebnis
 
-1. **8 SVG-Dateien in `public/logos/` ersetzen** mit den echten Vektor-Logos von Simple Icons. Jede Datei enthaelt einen echten grafischen SVG-Pfad (kein Text-Element).
-
-2. **`src/components/HeroSection.tsx` anpassen**:
-   - `logos`-Array aktualisieren mit den neuen Firmennamen und Pfaden
-   - Nicht mehr benoetigte Dateien (celonis, adjust, sennder, taxfix, billie) werden entfernt bzw. durch die neuen ersetzt
-
-3. **Styling bleibt gleich**: Graustufen-Filter mit Hover-Effekt fuer Farbe.
+Alle 8 Logos im Marquee werden als echte grafische Icons dargestellt, keine Text-Elemente mehr.
 
