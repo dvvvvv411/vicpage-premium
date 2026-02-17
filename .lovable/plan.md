@@ -1,42 +1,30 @@
 
 
-# Erfolgs-Popup im modernen Seitenstil aufwerten
+# Erfolgs-Popup Feinschliff
 
 ## Uebersicht
 
-Das aktuelle Erfolgs-Popup nutzt das Standard-Dialog-Styling mit minimaler Gestaltung. Es wird an den Glassmorphism-Stil der restlichen Seite angepasst -- mit dezenten Hintergrund-Effekten, groesserem Abstand und einem wertigeren Look.
+Drei kleine Anpassungen am Erfolgs-Dialog in `src/pages/Karriere.tsx`.
 
 ## Aenderungen
 
-Nur eine Datei: `src/pages/Karriere.tsx` (Zeilen 450-468)
+### 1. Weisser Hintergrund statt grau/transparent
 
-## Was sich aendert
+`bg-white/80` wird zu `bg-white` geaendert, damit der Hintergrund rein weiss ist.
 
-### DialogContent
+### 2. Titel zentrieren
 
-- Glassmorphism-Background: `bg-white/80 backdrop-blur-xl border border-white/60 shadow-2xl`
-- Mehr Padding: `p-10`
-- Groessere Rundung: `rounded-3xl`
-- Max-Breite bleibt `max-w-md`
+`DialogTitle` bekommt `text-center w-full` damit der Text mittig steht statt linksbuendig.
 
-### Icon-Bereich
+### 3. Beschreibungstext auf 2 Zeilen
 
-- Groesserer Kreis (w-20 h-20) mit sanftem Gradient-Hintergrund in Blau-Toenen statt dem schlichten `bg-accent`
-- Groesseres Haekchen-Icon (w-10 h-10) in Weiss auf dem Gradient-Kreis
-- Dezenter Ring/Glow-Effekt um den Kreis (`shadow-lg shadow-primary/20`)
+Der Text wird aufgeteilt in zwei Zeilen:
+- Zeile 1: "Vielen Dank fuer deine Bewerbung."
+- Zeile 2: "Wir werden uns in Kuerze bei dir melden."
 
-### Typografie
+Umgesetzt mit einem `<br />` Tag innerhalb der DialogDescription.
 
-- Titel wird groesser: `text-2xl font-bold font-display` (Space Grotesk)
-- Beschreibungstext: `text-base text-muted-foreground mt-2` mit etwas mehr Abstand
-- Zusaetzlicher kleiner Hinweis unter dem Text: "Du erhaeltst eine Bestaetigungsmail an deine E-Mail-Adresse." in `text-xs`
+## Technische Details
 
-### Button
-
-- Bleibt `pill-button-primary` aber wird groesser: `px-10 py-3.5 text-sm`
-- Mehr Abstand nach oben: `mt-6`
-
-### Dezentes Konfetti/Sparkle-Detail
-
-- Kleines Sparkles-Icon (aus lucide) ueber dem Haekchen-Kreis in `text-primary/30` als dezentes visuelles Element
+Alle Aenderungen betreffen nur den Dialog-Block in `src/pages/Karriere.tsx` (ca. Zeilen 450-470).
 
