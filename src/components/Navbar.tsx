@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/47skys-logo.png";
 
 const navLinks = [
   { label: "Leistungen", to: "/leistungen" },
@@ -34,7 +35,7 @@ export function Navbar() {
     >
       <div className="vic-container flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="font-display text-xl font-bold tracking-tight text-foreground">
-          47<span className="text-gradient-blue">skys</span>
+          <img src={logo} alt="47skys" className="h-8 w-auto" />
         </Link>
 
         {/* Desktop nav */}
