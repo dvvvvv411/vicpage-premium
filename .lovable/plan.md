@@ -1,20 +1,28 @@
 
 
-# Verdienst im Dropdown anzeigen
+# Preise anpassen
 
 ## Aenderung
 
-Die drei Optionen im "Anstellungsart"-Dropdown werden um die monatliche Verguetung ergaenzt.
+Die monatlichen Verguetungen werden auf die neuen Netto-Betraege aktualisiert – ueberall wo sie erscheinen.
 
 ## Technische Aenderung
 
 **Datei:** `src/pages/Karriere.tsx`
 
-Die `SelectItem`-Texte werden aktualisiert:
+Drei Stellen werden angepasst:
 
-- "Minijob" wird zu "Minijob – 603,00 EUR/Monat"
-- "Teilzeit" wird zu "Teilzeit – 1.600,00 EUR/Monat"
-- "Vollzeit" wird zu "Vollzeit – 3.400,00 EUR/Monat"
+1. **`positions`-Array** (oben in der Datei):
+   - Vollzeit: "3.400,00 EUR" wird zu "3.050,00 EUR"
+   - Teilzeit: "1.600,00 EUR" wird zu "1.650,00 EUR"
+   - Minijob: bleibt "603,00 EUR"
 
-Keine weiteren Aenderungen noetig.
+2. **Verguetungssektion** (Karten im linken Bereich): Wird automatisch aus dem Array gerendert, daher keine separate Aenderung noetig.
+
+3. **Dropdown-Optionen** (SelectItems im Formular):
+   - "Minijob – 603,00 EUR/Monat" bleibt
+   - "Teilzeit – 1.600,00 EUR/Monat" wird zu "Teilzeit – 1.650,00 EUR netto/Monat"
+   - "Vollzeit – 3.400,00 EUR/Monat" wird zu "Vollzeit – 3.050,00 EUR netto/Monat"
+
+Zusaetzlich wird ueberall "netto" ergaenzt, damit die Angabe eindeutig ist.
 
