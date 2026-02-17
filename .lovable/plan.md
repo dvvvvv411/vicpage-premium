@@ -1,39 +1,15 @@
 
 
-# Cookie-Consent-Banner
+# Logo Hover-Effekt im Header und Footer
 
-Ein dezenter, zum hellen Premium-Design passender Cookie-Banner, der beim ersten Besuch unten am Bildschirmrand erscheint und sich nach Zustimmung nicht mehr zeigt.
+Beim Hover ueber das Logo wird es sanft groesser skaliert -- passend zum bestehenden `hover-scale` Utility im Design-System.
 
-## Verhalten
-
-- Erscheint beim ersten Seitenbesuch als schmale Leiste am unteren Bildschirmrand
-- Speichert die Zustimmung im `localStorage` unter dem Key `cookie-consent`
-- Wird bei erneutem Besuch nicht mehr angezeigt
-- Zwei Buttons: "Akzeptieren" (primaer, pillenfoermig) und "Mehr erfahren" (Link zur Datenschutz-Seite)
-- Sanfte Einblend-Animation von unten (CSS transition)
-
-## Design
-
-- Glassmorphism-Stil (`glass-card` Klasse) passend zum bestehenden Seitendesign
-- Heller Hintergrund mit Backdrop-Blur, dezenter Border
-- Kompakter Text in einer Zeile auf Desktop, gestapelt auf Mobile
-- Pillenfoermige Buttons wie im restlichen Design
-
-## Technische Umsetzung
+## Aenderungen
 
 | Datei | Aenderung |
 |-------|-----------|
-| `src/components/CookieConsent.tsx` | Neue Komponente erstellen |
-| `src/pages/Index.tsx` | Komponente einbinden |
+| `src/components/Navbar.tsx` | `className="h-12 w-auto"` wird zu `className="h-12 w-auto transition-transform duration-200 hover:scale-110"` |
+| `src/components/Footer.tsx` | `className="h-12 w-auto"` wird zu `className="h-12 w-auto transition-transform duration-200 hover:scale-110"` |
 
-### Neue Datei: `src/components/CookieConsent.tsx`
-
-- `useState` fuer Sichtbarkeit, initialisiert aus `localStorage.getItem("cookie-consent")`
-- Bei Klick auf "Akzeptieren": `localStorage.setItem("cookie-consent", "true")` und Banner ausblenden
-- "Mehr erfahren"-Link fuehrt zu `/datenschutz`
-- Positionierung: `fixed bottom-0` mit `z-40` (unter der Navbar)
-
-### `src/pages/Index.tsx`
-
-- Import und Einbindung von `<CookieConsent />` am Ende des `<main>`-Blocks
+Nur CSS-Klassen auf den `<img>`-Tags -- keine strukturellen Aenderungen.
 
