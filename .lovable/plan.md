@@ -1,33 +1,41 @@
 
 
-# Kleinere Nischen-Unternehmen im Logo-Marquee
+# Logos lokal speichern statt externe URLs
 
-## Aenderung
+## Problem
 
-Statt grosser Konzerne wie Miele oder Stihl werden kleinere, digitale Nischen-Unternehmen verwendet, die besser zu einer Digitalagentur passen.
+Die Clearbit-URLs (`https://logo.clearbit.com/...`) werden blockiert oder laden nicht. Externe Logo-Dienste sind unzuverlaessig.
 
-## Ausgewaehlte Unternehmen
+## Loesung
 
-Acht kleinere deutsche Online-/Digital-Unternehmen:
+Fuer jedes der 8 Unternehmen wird ein einfaches, wiedererkennbares SVG-Logo als lokale Datei im `public/logos/`-Ordner erstellt. SVGs sind ideal, da sie:
+- Klein und schnell sind
+- Perfekt skalieren
+- Keine externen Abhaengigkeiten haben
 
-1. **Personio** – HR-Software fuer KMUs
-2. **Celonis** – Process Mining
-3. **Adjust** – Mobile-Analytics
-4. **Contentful** – Headless CMS
-5. **Staffbase** – Mitarbeiter-Kommunikation
-6. **Sennder** – Digitale Logistik
-7. **Taxfix** – Steuer-App
-8. **Billie** – B2B-Zahlungen
+## Ausgewaehlte Unternehmen und Logos
+
+Da echte Markenlogos urheberrechtlich geschuetzt sind und nicht einfach kopiert werden koennen, werden die Firmennamen als schlichte, typografische Wortmarken in SVG-Form erstellt – aehnlich wie die Unternehmen ihre Logos tatsaechlich verwenden (z.B. Personio, Celonis etc. nutzen primaer Wortmarken).
 
 ## Technische Umsetzung
 
-**Datei:** `src/components/HeroSection.tsx`
+1. **8 SVG-Dateien erstellen** in `public/logos/`:
+   - `personio.svg`
+   - `celonis.svg`
+   - `adjust.svg`
+   - `contentful.svg`
+   - `staffbase.svg`
+   - `sennder.svg`
+   - `taxfix.svg`
+   - `billie.svg`
 
-1. **`logos`-Array ersetzen**: Statt der bisherigen String-Liste wird ein Array mit `{ name, logoUrl }` Objekten verwendet. Die Logo-URLs stammen von oeffentlich zugaenglichen Quellen (z.B. Wikimedia Commons, offizielle Brand-Assets, oder logo.clearbit.com).
+   Jede Datei enthaelt eine saubere SVG-Wortmarke mit dem Firmennamen in einer modernen Sans-Serif-Schrift.
 
-2. **Marquee-Rendering anpassen**: Statt Platzhalter-Buchstaben werden `<img>`-Tags mit den echten Logos gerendert. Darstellung in Graustufen mit reduzierter Opacity, Hover-Effekt bringt Farbe zurueck.
+2. **`src/components/HeroSection.tsx` anpassen**:
+   - Die `logoUrl`-Werte im `logos`-Array werden auf die lokalen Pfade umgestellt (z.B. `/logos/personio.svg`)
+   - Keine weiteren Aenderungen am Rendering noetig, da die `<img>`-Tags bereits korrekt eingebunden sind
 
-3. **Nur Logos, kein Text**: Wie gewuenscht werden ausschliesslich die Logo-Grafiken ohne begleitende Firmennamen angezeigt.
+## Ergebnis
 
-4. **Styling**: Einheitliche Hoehe (28-32px), `object-contain`, `grayscale` + `opacity-50`, bei Hover `grayscale-0 opacity-100`.
+Logos laden zuverlaessig ohne externe Abhaengigkeiten, sehen professionell aus und passen zum Graustufen-Design der Seite.
 
