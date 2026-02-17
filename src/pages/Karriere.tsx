@@ -136,7 +136,7 @@ const Karriere = () => {
                     </div>
                     <div>
                       <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
-                        Qualitätsprüfer / Produkttester (m/w/d)
+                        Auftragsbearbeiter im Bereich Datenerfassung (m/w/d)
                       </h2>
                     </div>
                   </div>
