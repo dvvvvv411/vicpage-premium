@@ -43,7 +43,7 @@ export function Navbar() {
           to="/"
           className="absolute left-1/2 -translate-x-1/2 md:relative md:left-auto md:translate-x-0 font-display text-xl font-bold tracking-tight text-foreground"
         >
-          <img src={logo} alt="47skys" className="h-12 w-auto" />
+          <img src={logo} alt="47skys" className="h-12 w-auto transition-transform duration-200 hover:scale-110" />
         </Link>
 
         {/* Desktop nav */}
