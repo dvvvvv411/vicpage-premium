@@ -1,24 +1,64 @@
 
+# Rebranding VicPage zu 47skys + Rechtstexte
 
-# Personio, Contentful und Staffbase SVGs neu schreiben
+## 1. Branding-Aenderungen (VicPage -> 47skys)
 
-## Problem
+Alle Vorkommen von "VicPage" werden durch "47skys" ersetzt. Betroffen sind:
 
-Die drei Logos fuer Personio, Contentful und Staffbase werden moeglicherweise noch als Text angezeigt, obwohl die aktuellen Dateien bereits echte SVG-Pfade enthalten. Dies kann an einem Cache-Problem liegen oder daran, dass die Dateien nicht korrekt ueberschrieben wurden.
+| Datei | Aenderung |
+|-------|-----------|
+| `index.html` | Title, Meta-Tags, Author |
+| `src/App.css` | Kommentar |
+| `src/components/Navbar.tsx` | Logo-Text: `47<span>skys</span>` |
+| `src/components/Footer.tsx` | Logo-Text, E-Mail (`info@47-skys.de`), Telefon (`06131-6365858`), Copyright, Impressum/Datenschutz-Links auf `/impressum` und `/datenschutz` |
+| `src/components/ContactSection.tsx` | E-Mail und Telefon |
+| `src/components/ResultsSection.tsx` | Testimonial-Text |
+| `src/pages/Ergebnisse.tsx` | 4 Testimonial-Zitate |
+| `src/pages/Kontakt.tsx` | Kontaktdaten (E-Mail, Telefon, Standort: Mainz), Map-Platzhalter |
+| `src/pages/Karriere.tsx` | Subtitle-Text, Platzhalter "Berlin" -> "Mainz" |
+| `src/components/Footer.tsx` | Beschreibungstext anpassen |
 
-## Loesung
+## 2. Kontaktdaten-Aktualisierung
 
-Die drei SVG-Dateien werden nochmal explizit neu geschrieben, um sicherzustellen, dass die echten Simple Icons Grafiken korrekt gespeichert sind. Die Pfade sind bereits korrekt (verifiziert durch Dateipruefung), es geht nur darum, das Speichern zu erzwingen.
+- **E-Mail**: `info@47-skys.de`
+- **Telefon**: `06131-6365858`
+- **Standort**: Mainz, Deutschland
+- **Domain**: 47-skys.de
 
-## Betroffene Dateien
+## 3. Neue Rechtstexte-Seiten
 
-1. **`public/logos/personio.svg`** - Neu schreiben mit dem echten Personio-Icon (Schwalben-/Wellenform)
-2. **`public/logos/contentful.svg`** - Neu schreiben mit dem echten Contentful-Icon (Blob mit Punkten)
-3. **`public/logos/staffbase.svg`** - Neu schreiben mit dem echten Staffbase-Icon (Smiley-Kreis)
+### Impressum (`src/pages/Impressum.tsx`)
 
-Keine Aenderungen an `HeroSection.tsx` noetig - die Pfade im `logos`-Array sind bereits korrekt.
+Vollstaendiges Impressum nach deutschem Recht mit:
+- 47skys GmbH, Am Klostergarten 6, 55131 Mainz
+- Geschaeftsfuehrer: Florian Braun
+- Amtsgericht Mainz, HRB 54159
+- USt-IdNr.: DE258920497
+- Kontaktdaten
+- Haftungsausschluss, Urheberrecht, Streitbeilegung
 
-## Ergebnis
+### Datenschutz (`src/pages/Datenschutz.tsx`)
 
-Alle 8 Logos im Marquee werden als echte grafische Icons dargestellt, keine Text-Elemente mehr.
+Datenschutzerklaerung mit:
+- Verantwortlicher (47skys GmbH)
+- Datenerhebung auf der Website
+- Kontaktformular-Daten
+- Hosting, Cookies, Analyse
+- Rechte der Betroffenen
 
+Beide Seiten verwenden das bestehende Layout (Navbar, PageHero, Footer).
+
+## 4. Routing und Navigation
+
+### `src/App.tsx`
+- Neue Routen: `/impressum` und `/datenschutz`
+
+### `src/components/Footer.tsx`
+- Impressum-Link: `to="/impressum"`
+- Datenschutz-Link: `to="/datenschutz"`
+
+## Technische Details
+
+- Insgesamt ca. 12 Dateien betroffen (10 bearbeiten, 2 neu erstellen)
+- CSS-Klasse `vic-container` bleibt unveraendert (rein technischer Klassenname)
+- Tailwind-Farben `vic-blue-light`, `vic-indigo` etc. bleiben ebenfalls (interne Variablen)
