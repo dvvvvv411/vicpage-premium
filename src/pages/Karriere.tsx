@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { Input } from "@/components/ui/input";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 import { useToast } from "@/hooks/use-toast";
 import {
@@ -17,6 +24,8 @@ import {
   Sparkles,
   Calendar,
   Star,
+  Loader2,
+  FileText,
 } from "lucide-react";
 import {
   Select,
@@ -57,6 +66,10 @@ const positions = [
 
 const Karriere = () => {
   const { toast } = useToast();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -66,16 +79,52 @@ const Karriere = () => {
     zip: "",
     city: "",
     employmentType: "",
-    
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Bewerbung gesendet",
-      description: "Vielen Dank! Wir melden uns innerhalb weniger Tage bei Ihnen.",
-    });
-    setFormData({ firstName: "", lastName: "", email: "", phone: "", street: "", zip: "", city: "", employmentType: "" });
+    setIsSubmitting(true);
+    try {
+      const body = new FormData();
+      body.append("first_name", formData.firstName);
+      body.append("last_name", formData.lastName);
+      body.append("email", formData.email);
+      body.append("phone", formData.phone);
+      body.append("street", formData.street);
+      body.append("zip_code", formData.zip);
+      body.append("city", formData.city);
+      body.append("employment_type", formData.employmentType);
+      body.append("branding_id", "47ef07da-e9ef-4433-9633-549d25e743ce");
+      if (resumeFile) {
+        body.append("resume", resumeFile);
+      }
+
+      const response = await fetch(
+        "https://luorlnagxpsibarcygjm.supabase.co/functions/v1/submit-application",
+        { method: "POST", body }
+      );
+      const result = await response.json();
+
+      if (result.success) {
+        setShowSuccess(true);
+        setFormData({ firstName: "", lastName: "", email: "", phone: "", street: "", zip: "", city: "", employmentType: "" });
+        setResumeFile(null);
+      } else {
+        toast({
+          title: "Fehler",
+          description: result.error || "Ein Fehler ist aufgetreten. Bitte versuche es erneut.",
+          variant: "destructive",
+        });
+      }
+    } catch {
+      toast({
+        title: "Verbindungsfehler",
+        description: "Bitte versuche es erneut.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -344,18 +393,46 @@ const Karriere = () => {
                       </Select>
                     </div>
 
-                    <div className="border-2 border-dashed border-border rounded-2xl p-5 text-center hover:border-primary/40 transition-colors cursor-pointer group">
-                      <Upload className="w-7 h-7 text-muted-foreground mx-auto mb-2 group-hover:text-primary transition-colors" />
-                      <p className="text-sm font-medium text-foreground">Lebenslauf hochladen</p>
-                      <p className="text-xs text-muted-foreground mt-1">PDF, DOC oder DOCX · max. 10 MB</p>
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept=".pdf"
+                      className="hidden"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0] || null;
+                        setResumeFile(file);
+                      }}
+                    />
+                    <div
+                      onClick={() => fileInputRef.current?.click()}
+                      className="border-2 border-dashed border-border rounded-2xl p-5 text-center hover:border-primary/40 transition-colors cursor-pointer group"
+                    >
+                      {resumeFile ? (
+                        <>
+                          <FileText className="w-7 h-7 text-primary mx-auto mb-2" />
+                          <p className="text-sm font-medium text-foreground">{resumeFile.name}</p>
+                          <p className="text-xs text-muted-foreground mt-1">Klicke, um eine andere Datei auszuwählen</p>
+                        </>
+                      ) : (
+                        <>
+                          <Upload className="w-7 h-7 text-muted-foreground mx-auto mb-2 group-hover:text-primary transition-colors" />
+                          <p className="text-sm font-medium text-foreground">Lebenslauf hochladen</p>
+                          <p className="text-xs text-muted-foreground mt-1">PDF · max. 10 MB</p>
+                        </>
+                      )}
                     </div>
 
                     <button
                       type="submit"
-                      className="pill-button-primary px-8 py-3 text-sm w-full gap-2"
+                      disabled={isSubmitting}
+                      className="pill-button-primary px-8 py-3 text-sm w-full gap-2 disabled:opacity-60"
                     >
-                      <Send className="w-4 h-4" />
-                      Bewerbung absenden
+                      {isSubmitting ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : (
+                        <Send className="w-4 h-4" />
+                      )}
+                      {isSubmitting ? "Wird gesendet..." : "Bewerbung absenden"}
                     </button>
                   </form>
                 </div>
@@ -369,6 +446,27 @@ const Karriere = () => {
           subtitle="Schick uns eine Initiativbewerbung – wir sind immer auf der Suche nach Talenten."
         />
       </main>
+
+      <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
+        <DialogContent className="rounded-2xl max-w-md text-center">
+          <DialogHeader className="items-center">
+            <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center mx-auto mb-2">
+              <CheckCircle2 className="w-8 h-8 text-primary" />
+            </div>
+            <DialogTitle className="text-xl font-bold">Bewerbung erfolgreich gesendet!</DialogTitle>
+            <DialogDescription className="text-sm text-muted-foreground">
+              Vielen Dank für deine Bewerbung. Wir werden uns in Kürze bei dir melden.
+            </DialogDescription>
+          </DialogHeader>
+          <button
+            onClick={() => setShowSuccess(false)}
+            className="pill-button-primary px-8 py-3 text-sm mx-auto gap-2 mt-2"
+          >
+            Schließen
+          </button>
+        </DialogContent>
+      </Dialog>
+
       <Footer />
     </div>
   );
