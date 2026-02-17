@@ -2,14 +2,14 @@ import { ArrowRight, Sparkles, Star, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const logos = [
-  { name: "Personio", logoUrl: "https://logo.clearbit.com/personio.de" },
-  { name: "Celonis", logoUrl: "https://logo.clearbit.com/celonis.com" },
-  { name: "Adjust", logoUrl: "https://logo.clearbit.com/adjust.com" },
-  { name: "Contentful", logoUrl: "https://logo.clearbit.com/contentful.com" },
-  { name: "Staffbase", logoUrl: "https://logo.clearbit.com/staffbase.com" },
-  { name: "Sennder", logoUrl: "https://logo.clearbit.com/sennder.com" },
-  { name: "Taxfix", logoUrl: "https://logo.clearbit.com/taxfix.de" },
-  { name: "Billie", logoUrl: "https://logo.clearbit.com/billie.io" },
+  { name: "Personio", logoUrl: "/logos/personio.svg" },
+  { name: "Celonis", logoUrl: "/logos/celonis.svg" },
+  { name: "Adjust", logoUrl: "/logos/adjust.svg" },
+  { name: "Contentful", logoUrl: "/logos/contentful.svg" },
+  { name: "Staffbase", logoUrl: "/logos/staffbase.svg" },
+  { name: "Sennder", logoUrl: "/logos/sennder.svg" },
+  { name: "Taxfix", logoUrl: "/logos/taxfix.svg" },
+  { name: "Billie", logoUrl: "/logos/billie.svg" },
 ];
 
 export function HeroSection() {
