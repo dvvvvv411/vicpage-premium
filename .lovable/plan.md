@@ -1,47 +1,42 @@
 
 
-# Bewerbungsformular mit Backend verbinden + Erfolgs-Popup
+# Erfolgs-Popup im modernen Seitenstil aufwerten
 
 ## Uebersicht
 
-Das Formular auf `/karriere` wird an die Supabase Edge Function angebunden. Nach erfolgreichem Absenden erscheint ein Erfolgs-Dialog im Glassmorphism-Stil. Der Lebenslauf-Upload wird auf PDF beschraenkt.
+Das aktuelle Erfolgs-Popup nutzt das Standard-Dialog-Styling mit minimaler Gestaltung. Es wird an den Glassmorphism-Stil der restlichen Seite angepasst -- mit dezenten Hintergrund-Effekten, groesserem Abstand und einem wertigeren Look.
 
 ## Aenderungen
 
-Nur eine Datei: `src/pages/Karriere.tsx`
+Nur eine Datei: `src/pages/Karriere.tsx` (Zeilen 450-468)
 
-## Was passiert
+## Was sich aendert
 
-### 1. Lebenslauf-Upload (nur PDF)
+### DialogContent
 
-- Verstecktes `<input type="file" accept=".pdf">` hinter dem bestehenden Upload-Bereich
-- Klick auf den Dashed-Border-Bereich oeffnet den File-Picker
-- Dateiname wird nach Auswahl angezeigt
-- Neuer State: `resumeFile: File | null`
+- Glassmorphism-Background: `bg-white/80 backdrop-blur-xl border border-white/60 shadow-2xl`
+- Mehr Padding: `p-10`
+- Groessere Rundung: `rounded-3xl`
+- Max-Breite bleibt `max-w-md`
 
-### 2. Formular absenden
+### Icon-Bereich
 
-- Neuer State: `isSubmitting` fuer Ladezustand (Button zeigt Spinner, ist deaktiviert)
-- Baut ein `FormData`-Objekt mit allen Feldern:
-  - `first_name`, `last_name`, `email`, `phone`, `street`, `zip_code`, `city`, `employment_type`
-  - `branding_id` = `"47ef07da-e9ef-4433-9633-549d25e743ce"` (fest eingebaut)
-  - `resume` = hochgeladene PDF-Datei
-- Sendet POST an `https://luorlnagxpsibarcygjm.supabase.co/functions/v1/submit-application`
-- Bei Erfolg (`success: true`): Erfolgs-Dialog oeffnen, Formular zuruecksetzen
-- Bei Fehler: Toast mit Fehlermeldung
+- Groesserer Kreis (w-20 h-20) mit sanftem Gradient-Hintergrund in Blau-Toenen statt dem schlichten `bg-accent`
+- Groesseres Haekchen-Icon (w-10 h-10) in Weiss auf dem Gradient-Kreis
+- Dezenter Ring/Glow-Effekt um den Kreis (`shadow-lg shadow-primary/20`)
 
-### 3. Erfolgs-Dialog
+### Typografie
 
-- Nutzt die bestehende `Dialog`-Komponente aus `@/components/ui/dialog`
-- Gruenes Haekchen-Icon
-- Titel: "Bewerbung erfolgreich gesendet!"
-- Text: "Vielen Dank fuer deine Bewerbung. Wir werden uns in Kuerze bei dir melden."
-- "Schliessen"-Button im Pill-Style
-- Styling passend zum Glassmorphism-Design (rounded-2xl)
+- Titel wird groesser: `text-2xl font-bold font-display` (Space Grotesk)
+- Beschreibungstext: `text-base text-muted-foreground mt-2` mit etwas mehr Abstand
+- Zusaetzlicher kleiner Hinweis unter dem Text: "Du erhaeltst eine Bestaetigungsmail an deine E-Mail-Adresse." in `text-xs`
 
-### 4. Fehlerbehandlung
+### Button
 
-- Netzwerkfehler: Toast "Verbindungsfehler. Bitte versuche es erneut."
-- API-Fehler: Toast mit Fehlermeldung aus der Response
-- Try/catch um den gesamten Fetch-Aufruf, `finally` setzt `isSubmitting` zurueck
+- Bleibt `pill-button-primary` aber wird groesser: `px-10 py-3.5 text-sm`
+- Mehr Abstand nach oben: `mt-6`
+
+### Dezentes Konfetti/Sparkle-Detail
+
+- Kleines Sparkles-Icon (aus lucide) ueber dem Haekchen-Kreis in `text-primary/30` als dezentes visuelles Element
 
