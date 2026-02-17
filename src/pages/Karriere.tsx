@@ -448,15 +448,15 @@ const Karriere = () => {
       </main>
 
       <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
-        <DialogContent className="bg-white/80 backdrop-blur-xl border border-white/60 shadow-2xl rounded-3xl max-w-md text-center p-10">
+        <DialogContent className="bg-white backdrop-blur-xl border border-white/60 shadow-2xl rounded-3xl max-w-md text-center p-10">
           <DialogHeader className="items-center">
             <Sparkles className="w-5 h-5 text-primary/30 mx-auto mb-1" />
             <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/80 to-primary flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary/20">
               <CheckCircle2 className="w-10 h-10 text-white" />
             </div>
-            <DialogTitle className="text-2xl font-bold font-display">Bewerbung erfolgreich gesendet!</DialogTitle>
+            <DialogTitle className="text-2xl font-bold font-display text-center w-full">Bewerbung erfolgreich gesendet!</DialogTitle>
             <DialogDescription className="text-base text-muted-foreground mt-2">
-              Vielen Dank für deine Bewerbung. Wir werden uns in Kürze bei dir melden.
+              Vielen Dank für deine Bewerbung.<br />Wir werden uns in Kürze bei dir melden.
             </DialogDescription>
             <p className="text-xs text-muted-foreground/70 mt-1">Du erhältst eine Bestätigungsmail an deine E-Mail-Adresse.</p>
           </DialogHeader>
