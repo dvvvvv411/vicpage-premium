@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone } from "lucide-react";
+import logo from "@/assets/47skys-logo.png";
 
 export function Footer() {
   return (
@@ -9,7 +10,7 @@ export function Footer() {
           {/* Logo & Description */}
           <div>
             <Link to="/" className="font-display text-xl font-bold text-foreground">
-              47<span className="text-primary">skys</span>
+              <img src={logo} alt="47skys" className="h-8 w-auto" />
             </Link>
             <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
               Digitale Medienagentur für Prozessoptimierung, Performance Marketing und datengetriebenes Wachstum.
