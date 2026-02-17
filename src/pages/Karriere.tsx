@@ -448,19 +448,21 @@ const Karriere = () => {
       </main>
 
       <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
-        <DialogContent className="rounded-2xl max-w-md text-center">
+        <DialogContent className="bg-white/80 backdrop-blur-xl border border-white/60 shadow-2xl rounded-3xl max-w-md text-center p-10">
           <DialogHeader className="items-center">
-            <div className="w-16 h-16 rounded-full bg-accent flex items-center justify-center mx-auto mb-2">
-              <CheckCircle2 className="w-8 h-8 text-primary" />
+            <Sparkles className="w-5 h-5 text-primary/30 mx-auto mb-1" />
+            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/80 to-primary flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary/20">
+              <CheckCircle2 className="w-10 h-10 text-white" />
             </div>
-            <DialogTitle className="text-xl font-bold">Bewerbung erfolgreich gesendet!</DialogTitle>
-            <DialogDescription className="text-sm text-muted-foreground">
+            <DialogTitle className="text-2xl font-bold font-display">Bewerbung erfolgreich gesendet!</DialogTitle>
+            <DialogDescription className="text-base text-muted-foreground mt-2">
               Vielen Dank für deine Bewerbung. Wir werden uns in Kürze bei dir melden.
             </DialogDescription>
+            <p className="text-xs text-muted-foreground/70 mt-1">Du erhältst eine Bestätigungsmail an deine E-Mail-Adresse.</p>
           </DialogHeader>
           <button
             onClick={() => setShowSuccess(false)}
-            className="pill-button-primary px-8 py-3 text-sm mx-auto gap-2 mt-2"
+            className="pill-button-primary px-10 py-3.5 text-sm mx-auto gap-2 mt-6"
           >
             Schließen
           </button>
