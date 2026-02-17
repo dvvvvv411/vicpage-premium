@@ -27,27 +27,32 @@ import {
 } from "@/components/ui/select";
 
 const tasks = [
-  "Entwicklung und Umsetzung kanalübergreifender Marketingstrategien",
-  "Analyse und Optimierung laufender Kampagnen anhand von KPIs",
-  "Erstellung von Content für Social Media, Newsletter und Landingpages",
-  "Zusammenarbeit mit Design- und Entwicklungsteams",
-  "Markt- und Wettbewerbsanalysen zur Identifikation neuer Chancen",
+  "Durchführung und Dokumentation von vorgegebenen Prüf- und Anwendungsvorgängen nach internen Richtlinien",
+  "Bearbeitung strukturierter Feedback- und Bewertungsprozesse zu digitalen Produkten und Dienstleistungen",
+  "Erfassung, Weiterleitung und Nachverfolgung festgestellter Abweichungen oder Optimierungshinweise",
+  "Unterstützung bei der Qualitätssicherung durch sorgfältige Protokollierung von Ergebnissen und Einhaltung vorgegebener Abläufe",
 ];
 
 const profile = [
-  "Abgeschlossenes Studium im Bereich Marketing, Kommunikation oder vergleichbar",
-  "Mindestens 3 Jahre Erfahrung im digitalen Marketing",
-  "Erfahrung mit Analytics-Tools (Google Analytics, HubSpot o.ä.)",
-  "Kreativität und ein gutes Gespür für Trends",
-  "Fließende Deutsch- und Englischkenntnisse",
+  "Keine Vorerfahrung erforderlich – ideal für Berufseinsteiger und Quereinsteiger",
+  "Fließende Deutschkenntnisse in Wort und Schrift",
+  "Sicherer Umgang mit gängigen Office-Anwendungen (Word, Excel & Co.)",
+  "Eigenes Handy oder Laptop vorhanden",
+  "Sorgfältige, zuverlässige und selbstständige Arbeitsweise",
+  "Interesse an digitalen Produkten und Dienstleistungen",
 ];
 
 const benefits = [
-  "Flexible Arbeitszeiten und Remote-Optionen",
-  "Modernes Büro im Herzen von Berlin",
-  "30 Tage Urlaub und Workation-Möglichkeiten",
-  "Weiterbildungsbudget und regelmäßige Workshops",
+  "Flexible Arbeitszeiten",
+  "100 % Homeoffice / Remote",
+  "Weiterbildungsmöglichkeiten",
   "Flache Hierarchien und ein motiviertes Team",
+];
+
+const positions = [
+  { type: "Minijob", hours: "10 Stunden / Woche", salary: "603,00 €" },
+  { type: "Teilzeit", hours: "20 Stunden / Woche", salary: "1.600,00 €" },
+  { type: "Vollzeit", hours: "40 Stunden / Woche", salary: "3.400,00 €" },
 ];
 
 const Karriere = () => {
@@ -99,7 +104,7 @@ const Karriere = () => {
                 </div>
                 <div>
                   <p className="text-xs text-muted-foreground uppercase tracking-wider">Standort</p>
-                  <p className="text-base font-semibold text-foreground">Berlin / Remote</p>
+                  <p className="text-base font-semibold text-foreground">Mainz / Remote (100% Homeoffice)</p>
                 </div>
               </div>
               <div className="glass-card-solid rounded-2xl p-6 flex items-center gap-4">
@@ -131,20 +136,20 @@ const Karriere = () => {
                     </div>
                     <div>
                       <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
-                        Digital Marketing Manager (m/w/d)
+                        Qualitätsprüfer / Produkttester (m/w/d)
                       </h2>
                     </div>
                   </div>
 
                   <div className="flex flex-wrap gap-2 mb-10">
                     <span className="section-badge text-[10px] py-1 px-3">
-                      <MapPin className="w-3 h-3" /> Berlin
+                      <MapPin className="w-3 h-3" /> Mainz / Remote
                     </span>
                     <span className="section-badge text-[10px] py-1 px-3">
-                      <Clock className="w-3 h-3" /> Vollzeit
+                      <Clock className="w-3 h-3" /> Minijob / Teilzeit / Vollzeit
                     </span>
                     <span className="section-badge text-[10px] py-1 px-3">
-                      <Star className="w-3 h-3" /> 3+ Jahre Erfahrung
+                      <Star className="w-3 h-3" /> Keine Vorerfahrung nötig
                     </span>
                   </div>
 
@@ -192,6 +197,24 @@ const Karriere = () => {
                           </li>
                         ))}
                       </ul>
+                    </div>
+
+                    <div>
+                      <h3 className="font-display text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+                        <Briefcase className="w-5 h-5 text-primary" />
+                        Verfügbare Modelle & Vergütung
+                      </h3>
+                      <div className="space-y-3">
+                        {positions.map((pos, i) => (
+                          <div key={i} className="flex items-center justify-between rounded-xl bg-muted/50 border border-border p-4">
+                            <div>
+                              <p className="text-sm font-semibold text-foreground">{pos.type}</p>
+                              <p className="text-xs text-muted-foreground">{pos.hours}</p>
+                            </div>
+                            <p className="text-sm font-bold text-primary">{pos.salary} / Monat</p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
