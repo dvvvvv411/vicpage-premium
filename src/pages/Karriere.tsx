@@ -337,9 +337,9 @@ const Karriere = () => {
                           <SelectValue placeholder="Bitte wählen" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="minijob">Minijob</SelectItem>
-                          <SelectItem value="teilzeit">Teilzeit</SelectItem>
-                          <SelectItem value="vollzeit">Vollzeit</SelectItem>
+                          <SelectItem value="minijob">Minijob – 603,00 EUR/Monat</SelectItem>
+                          <SelectItem value="teilzeit">Teilzeit – 1.600,00 EUR/Monat</SelectItem>
+                          <SelectItem value="vollzeit">Vollzeit – 3.400,00 EUR/Monat</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
