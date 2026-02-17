@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 const logos = [
   { name: "Personio", logoUrl: "/logos/personio.svg" },
-  { name: "Celonis", logoUrl: "/logos/celonis.svg" },
-  { name: "Adjust", logoUrl: "/logos/adjust.svg" },
   { name: "Contentful", logoUrl: "/logos/contentful.svg" },
   { name: "Staffbase", logoUrl: "/logos/staffbase.svg" },
-  { name: "Sennder", logoUrl: "/logos/sennder.svg" },
-  { name: "Taxfix", logoUrl: "/logos/taxfix.svg" },
-  { name: "Billie", logoUrl: "/logos/billie.svg" },
+  { name: "Notion", logoUrl: "/logos/notion.svg" },
+  { name: "Asana", logoUrl: "/logos/asana.svg" },
+  { name: "Miro", logoUrl: "/logos/miro.svg" },
+  { name: "Linear", logoUrl: "/logos/linear.svg" },
+  { name: "HubSpot", logoUrl: "/logos/hubspot.svg" },
 ];
 
 export function HeroSection() {
