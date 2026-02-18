@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { TrendingUp, Users, PiggyBank, Clock, Quote, Star, Car, ShoppingCart, Home } from "lucide-react";
+import { useEffect } from "react";
 
 const metrics = [
   { icon: TrendingUp, value: "73%", label: "Durchschnittliche Prozessbeschleunigung" },
@@ -49,6 +50,8 @@ const testimonials = [
 ];
 
 const Ergebnisse = () => {
+  useEffect(() => { document.title = "Ergebnisse – 47skys"; }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />

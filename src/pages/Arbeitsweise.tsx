@@ -3,7 +3,7 @@ import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { Search, Lightbulb, Rocket, BarChart3, CheckCircle2, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const steps = [
   {
@@ -73,6 +73,7 @@ const faqs = [
 
 const Arbeitsweise = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  useEffect(() => { document.title = "Arbeitsweise – 47skys"; }, []);
 
   return (
     <div className="min-h-screen bg-background">

@@ -1,8 +1,11 @@
+import { useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
 
 const Datenschutz = () => {
+  useEffect(() => { document.title = "Datenschutz – 47skys"; }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
