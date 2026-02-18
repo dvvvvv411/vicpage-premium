@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
@@ -23,6 +23,7 @@ const Kontakt = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", message: "" });
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  useEffect(() => { document.title = "Kontakt – 47skys"; }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

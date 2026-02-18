@@ -1,8 +1,11 @@
+import { useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
 
 const Impressum = () => {
+  useEffect(() => { document.title = "Impressum – 47skys"; }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />

@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
 import { CTASection } from "@/components/CTASection";
 import { BarChart3, Cpu, LineChart, Megaphone, Settings, Target, CheckCircle2 } from "lucide-react";
+import { useEffect } from "react";
 
 const services = [
   {
@@ -71,6 +72,8 @@ function DashboardMockup() {
 }
 
 const Leistungen = () => {
+  useEffect(() => { document.title = "Leistungen – 47skys"; }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
