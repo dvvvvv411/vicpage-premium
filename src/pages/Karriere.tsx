@@ -322,11 +322,12 @@ const Karriere = () => {
                     </div>
                     <div>
                       <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1.5 block">
-                        Telefon
-                      </label>
-                      <Input
-                        type="tel"
-                        maxLength={30}
+          Telefon *
+        </label>
+        <Input
+          type="tel"
+          required
+          maxLength={30}
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="rounded-xl border-border bg-muted/50 focus-visible:ring-primary h-11"
